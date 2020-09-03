@@ -1,0 +1,15 @@
+{
+  "Vue Component": {
+    "prefix": "vue-component",
+    "body": [
+      "import { Component, Vue } from 'vue-property-decorator';",
+      "import template from '${1}';",
+      "",
+      "@Component({ template })",
+      "export default class $TM_FILENAME_BASE extends Vue {",
+      "  ${2}",
+      "}"
+    ],
+    "description": "Vue Component"
+  }
+}

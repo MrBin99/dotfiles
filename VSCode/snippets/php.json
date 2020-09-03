@@ -1,0 +1,22 @@
+{
+  "debug_and_die": {
+    "prefix": "vdd",
+    "description": "Debug and die",
+    "body": "echo '<pre>'; var_dump(${1:variable}); echo '</pre>'; die;"
+  },
+  "debug": {
+    "prefix": "vd",
+    "description": "Debug",
+    "body": "echo '<pre>'; var_dump(${1:variable}); echo '</pre>';"
+  },
+  "dd": {
+    "prefix": "dd",
+    "description": "dd",
+    "body": "dd(${1:variable});"
+  },
+  "dump": {
+    "prefix": "dump",
+    "description": "dump",
+    "body": "dump(${1:variable});"
+  }
+}

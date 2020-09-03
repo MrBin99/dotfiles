@@ -1,0 +1,221 @@
+{
+  /* --- Bash --- */
+  "terminal.integrated.shell.windows": "ubuntu.exe",
+
+  /* --- WSL --- */
+  "remote.WSL.fileWatcher.polling": true,
+
+  /* --- General editor --- */
+  "editor.fontSize": 14,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": true,
+  "editor.detectIndentation": false,
+  "editor.renderFinalNewline": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.rulers": [80],
+  "editor.wordWrap": "off",
+  "editor.tabCompletion": "on",
+  "editor.insertSpaces": true,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+
+  /* --- Files --- */
+  "files.insertFinalNewline": true,
+  "files.enableTrash": false,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\r\n",
+  "files.associations": {
+    "**/requirements/**,*}.{txt,in}": "pip-requirements",
+    "*.html": "html",
+    "*.vhtml": "html",
+    "*.dhtml": "django-html"
+  },
+
+  /* --- Interface --- */
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "none",
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.symbolSortOrder": "position",
+  "breadcrumbs.filePath": "off",
+  "workbench.settings.useSplitJSON": false,
+  "workbench.settings.editor": "json",
+  "explorer.openEditors.visible": 0,
+  "explorer.autoReveal": false,
+  "editor.minimap.showSlider": "always",
+
+  /* --- Icons --- */
+  "material-icon-theme.files.associations": {
+    "*.vhtml": "vue",
+    "*.dhtml": "django"
+  },
+
+  /* ----------------------- Extensions ------------------------ */
+  "extensions.ignoreRecommendations": false,
+
+  /* --- Vetur --- */
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "vetur.validation.script": true,
+  "vetur.validation.style": true,
+  "vetur.validation.template": true,
+  "vetur.format.scriptInitialIndent": true,
+  "vetur.format.styleInitialIndent": true,
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "semi": true,
+      "singleQuote": true
+    }
+  },
+
+  /* --- Prettier --- */
+  "prettier.vueIndentScriptAndStyle": true,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "es5",
+  "prettier.endOfLine": "crlf",
+  "prettier.htmlWhitespaceSensitivity": "ignore",
+  "prettier.useEditorConfig": false,
+
+  /* --- Eslint --- */
+  "eslint.enable": true,
+
+  /* --- Emmet --- */
+  "emmet.includeLanguages": {
+    "blade": "html",
+    "django-html": "html"
+  },
+
+  /* --- Watch SASS --- */
+  "liveSassCompile.settings.autoprefix": ["> 1%", "last 2 versions"],
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "compressed",
+      "extensionName": ".css",
+      "savePath": null
+    }
+  ],
+
+  /* --- Autostring --- */
+  "autoDocstring.docstringFormat": "docblockr",
+  "autoDocstring.guessTypes": true,
+  "autoDocstring.startOnNewLine": true,
+
+  /* --- PHP Docblocker --- */
+  "php-docblocker.qualifyClassNames": true,
+  "php-docblocker.useShortNames": false,
+  "php-docblocker.author": {
+    "name": "MrBin99"
+  },
+
+  /* --- Todo+ --- */
+  "todo.timekeeping.created.enabled": true,
+  "todo.timekeeping.created.format": "DD/MM/YY HH:mm",
+  "todo.timekeeping.started.format": "DD/MM/YY HH:mm",
+  "todo.timekeeping.finished.format": "DD/MM/YY HH:mm",
+
+  /* --- Git --- */
+  "scm.defaultViewMode": "tree",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.enabled": false,
+  "gitlens.views.repositories.location": "scm",
+  "gitlens.views.fileHistory.location": "scm",
+  "gitlens.views.search.location": "scm",
+  "gitlens.views.lineHistory.location": "scm",
+  "gitlens.views.compare.location": "scm",
+
+  /* --------------------- Languages ------------------------- */
+
+  /* --- HTML --- */
+  "html.format.enable": true,
+  "html.validate.styles": true,
+  "html.validate.scripts": true,
+  "html.autoClosingTags": true,
+  "html.format.extraLiners": "",
+  "html.format.wrapLineLength": 0,
+  "html.format.indentInnerHtml": true,
+  "html.format.endWithNewline": true,
+
+  /* --- JavaScript --- */
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /* --- TypeScript --- */
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /* --- HTML --- */
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.rulers": [],
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[django-html]": {
+    "editor.tabSize": 2,
+    "editor.rulers": [],
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    }
+  },
+
+  /* --- CSS --- */
+  "css.fileExtensions": ["css", "scss"],
+  "[css]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /* --- SCSS --- */
+  "[scss]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /* --- JSON --- */
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /* --- JSONC --- */
+  "[jsonc]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /* --- Vue --- */
+  "[vue]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "octref.vetur"
+  },
+
+  /* --- Python --- */
+  "[python]": {
+    "editor.tabSize": 4
+  },
+
+  /* --- PHP --- */
+  "[php]": {
+    "editor.tabSize": 4
+  }
+}
