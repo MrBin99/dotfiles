@@ -1,0 +1,62 @@
+{
+  "pif": {
+    "prefix": "pif",
+    "description": "PHTML If statement",
+    "body": ["<?php if ($1) : ?>", "    $2", "<?php endif; ?>"]
+  },
+  "pelseif": {
+    "prefix": "pelseif",
+    "description": "PHTML Elseif statement",
+    "body": ["<?php elseif ($1) : ?>", "    $2"]
+  },
+  "pelse": {
+    "prefix": "pelse",
+    "description": "PHTML Else statement",
+    "body": ["<?php else : ?>"]
+  },
+  "pwhile": {
+    "prefix": "pwhile",
+    "description": "PHTML While statement",
+    "body": ["<?php while ($1) : ?>", "    $2", "<?php endwhile; ?>"]
+  },
+  "pfor": {
+    "prefix": "pfor",
+    "description": "PHTML for statement",
+    "body": ["<?php for ($1) : ?>", "    $2", "<?php endfor; ?>"]
+  },
+  "pforeach": {
+    "prefix": "pforeach",
+    "description": "PHTML foreach statement",
+    "body": ["<?php foreach ($1 as $2) : ?>", "    $3", "<?php endforeach; ?>"]
+  },
+  "pecho": {
+    "prefix": "pecho",
+    "description": "PHTML Echo statement",
+    "body": ["<?php echo $1; ?>"]
+  },
+  "pphp": {
+    "prefix": "pphp",
+    "description": "PHTML PHP open context",
+    "body": ["<?php $1 ?>"]
+  },
+  "pdd": {
+    "prefix": "dd",
+    "description": "dd",
+    "body": ["<?php dd($1); ?>"]
+  },
+  "pdump": {
+    "prefix": "dump",
+    "description": "dump",
+    "body": ["<?php dump($1); ?>"]
+  },
+  "pdebug_and_die": {
+    "prefix": "pdebug_and_die",
+    "description": "Debug and die",
+    "body": ["<?php echo '<pre>'; var_dump($1); echo '</pre>'; die; ?>"]
+  },
+  "pdebug": {
+    "prefix": "pdebug",
+    "description": "Debug",
+    "body": ["<?php echo '<pre>'; var_dump($1); echo '</pre>'; ?>"]
+  }
+}

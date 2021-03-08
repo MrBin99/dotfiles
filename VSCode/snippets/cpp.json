@@ -1,0 +1,26 @@
+{
+  "Header": {
+    "prefix": "header",
+    "body": [
+      "/*",
+      " * Copyright (C) MrBin99 - ${CURRENT_YEAR}",
+      " * All Rights Reserved.",
+      " */",
+      "",
+      "$1"
+    ]
+  },
+  "Header Pragma": {
+    "prefix": "pragma",
+    "body": [
+      "/*",
+      " * Copyright (C) MrBin99 - ${CURRENT_YEAR}",
+      " * All Rights Reserved.",
+      " */",
+      "",
+      "#pragma once",
+      "",
+      "$1"
+    ]
+  }
+}
