@@ -2,9 +2,6 @@
   /* --- Bash --- */
   "terminal.integrated.shell.windows": "ubuntu.exe",
 
-  /* --- WSL --- */
-  "remote.WSL.fileWatcher.polling": true,
-
   /* --- General editor --- */
   "editor.fontSize": 14,
   "editor.fontFamily": "JetBrains Mono",
@@ -18,6 +15,7 @@
   "editor.tabCompletion": "on",
   "editor.insertSpaces": true,
   "editor.suggestOnTriggerCharacters": true,
+  "editor.semanticHighlighting.enabled": false,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
     "source.organizeImports": true
@@ -30,15 +28,15 @@
 
   /* --- Files --- */
   "files.insertFinalNewline": true,
-  "files.enableTrash": false,
+  "files.enableTrash": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "files.eol": "\r\n",
+  "files.eol": "\n",
   "files.associations": {
     "**/requirements/**,*}.{txt,in}": "pip-requirements",
-    "*.html": "html",
-    "*.vhtml": "html",
-    "*.dhtml": "django-html"
+    "*.vhtml": "vue-html",
+    "*.dhtml": "django-html",
+    "*.html": "html"
   },
 
   /* --- Interface --- */
@@ -52,12 +50,24 @@
   "workbench.settings.editor": "json",
   "explorer.openEditors.visible": 0,
   "explorer.autoReveal": false,
+  "explorer.compactFolders": false,
   "editor.minimap.showSlider": "always",
+
+  /* --- Debugger --- */
+  "debug.openExplorerOnEnd": true,
+  "debug.toolBarLocation": "docked",
+  "debug.console.closeOnEnd": true,
+  "debug.inlineValues": true,
+  "debug.openDebug": "openOnSessionStart",
 
   /* --- Icons --- */
   "material-icon-theme.files.associations": {
     "*.vhtml": "vue",
-    "*.dhtml": "django"
+    "*.dhtml": "django",
+    "*.glsl": "prisma",
+    "*.vert": "prisma",
+    "*.frag": "julia",
+    "*.html": "html"
   },
 
   /* ----------------------- Extensions ------------------------ */
@@ -87,17 +97,15 @@
   "prettier.jsxSingleQuote": true,
   "prettier.semi": true,
   "prettier.trailingComma": "es5",
-  "prettier.endOfLine": "crlf",
+  "prettier.endOfLine": "lf",
   "prettier.htmlWhitespaceSensitivity": "ignore",
   "prettier.useEditorConfig": false,
-
-  /* --- Eslint --- */
-  "eslint.enable": true,
 
   /* --- Emmet --- */
   "emmet.includeLanguages": {
     "blade": "html",
-    "django-html": "html"
+    "django-html": "html",
+    "postcss": "css"
   },
 
   /* --- Watch SASS --- */
@@ -127,9 +135,11 @@
   "todo.timekeeping.created.format": "DD/MM/YY HH:mm",
   "todo.timekeeping.started.format": "DD/MM/YY HH:mm",
   "todo.timekeeping.finished.format": "DD/MM/YY HH:mm",
+  "todo.embedded.regex": "(?:<!-- *)?(?:#|// @|//|/\\*+|<!--|--|\\* @|\\{!|\\{\\{!--|\\{\\{!) *(TODO|FIXME|FIX|BUG|UGLY|HACK|NOTE|IDEA|REVIEW|DEBUG|OPTIMIZE)(?:\\s*\\([^)]+\\))?:(?!\\w)(?: *-->| *\\*/| *!}| *--}}| *}}|(?= *(?:[^:]//|/\\*+|<!--|@|--|\\{!|\\{\\{!--|\\{\\{!))|((?: +[^\\n@]*?)(?= *(?:[^:]//|/\\*+|<!--|@|--(?!>)|\\{!|\\{\\{!--|\\{\\{!))|(?: +[^@\\n]+)?))",
 
   /* --- Git --- */
   "scm.defaultViewMode": "tree",
+  "git.autorefresh": true,
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.codeLens.enabled": false,
@@ -138,6 +148,11 @@
   "gitlens.views.search.location": "scm",
   "gitlens.views.lineHistory.location": "scm",
   "gitlens.views.compare.location": "scm",
+
+  /* --- Comment Divider */
+  "comment-divider.languagesMap": {
+    "cmake": ["#", "#"]
+  },
 
   /* --------------------- Languages ------------------------- */
 
@@ -161,6 +176,11 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  /* --- TypeScript React --- */
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
   /* --- HTML --- */
   "[html]": {
     "editor.tabSize": 2,
@@ -178,8 +198,20 @@
     }
   },
 
+  /* --- C++ --- */
+  "cmake.configureOnEdit": true,
+  "cmake.configureOnOpen": true,
+  "cmake.clearOutputBeforeBuild": true,
+  "cmake.revealLog": "focus",
+  "cmake.parseBuildDiagnostics": true,
+  "cmake.loggingLevel": "info",
+  "cmake.configureSettings": {
+    "CMAKE_BUILD_TYPE": "${buildType}"
+  },
+  "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.clang_format_style": "{ BasedOnStyle: Microsoft, AllowShortFunctionsOnASingleLine: None, IndentWidth: 2, ContinuationIndentWidth: 2, ConstructorInitializerIndentWidth: 2, IndentCaseLabels: true, TabWidth: 2, UseTab: Never, ColumnLimit: 80, PointerAlignment: Left, AllowShortIfStatementsOnASingleLine: false, MaxEmptyLinesToKeep: 1, NamespaceIndentation: All, IndentPPDirectives: BeforeHash, AlwaysBreakTemplateDeclarations: Yes, BreakConstructorInitializers: BeforeColon, AllowAllConstructorInitializersOnNextLine: true }",
+
   /* --- CSS --- */
-  "css.fileExtensions": ["css", "scss"],
   "[css]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -210,6 +242,8 @@
   },
 
   /* --- Python --- */
+  "python.showStartPage": false,
+  "python.languageServer": "Pylance",
   "[python]": {
     "editor.tabSize": 4
   },
