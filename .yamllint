@@ -1,0 +1,10 @@
+---
+rules:
+  document-start:
+    present: true
+
+  quoted-strings:
+    quote-type: "double"
+    required: true
+
+  line-length: "disable"

@@ -1,0 +1,8 @@
+---
+- name: "Install and configure new development environment"
+  hosts: "all"
+  gather_facts: true
+  tasks:
+    - name: "Show facts"
+      ansible.builtin.debug:
+        msg: "{{ ansible_facts }}"
