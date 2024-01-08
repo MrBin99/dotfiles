@@ -12,11 +12,15 @@
         name: "stow"
         tasks_from: "install"
 
-    - name: "Create the '.config' directory"
+    - name: "Create all needed directories"
       ansible.builtin.file:
-        path: "{{ ansible_env.HOME }}/.config"
+        path: "{{ ansible_env.HOME }}/{{ item }}"
         state: "directory"
         mode: "0755"
+      with_items:
+        - ".config"
+        - ".local"
+        - ".local/bin"
 
     - name: "Include role 'git'"
       ansible.builtin.include_role:
@@ -26,4 +30,9 @@
     - name: "Include role 'bash'"
       ansible.builtin.include_role:
         name: "bash"
+        tasks_from: "install"
+
+    - name: "Include role 'starship'"
+      ansible.builtin.include_role:
+        name: "starship"
         tasks_from: "install"

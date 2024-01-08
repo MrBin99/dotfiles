@@ -21,3 +21,8 @@
       ansible.builtin.include_role:
         name: "bash"
         tasks_from: "uninstall"
+
+    - name: "Include role 'starship'"
+      ansible.builtin.include_role:
+        name: "starship"
+        tasks_from: "uninstall"

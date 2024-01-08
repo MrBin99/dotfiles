@@ -1,0 +1,30 @@
+---
+- name: "Download Starship install script"
+  ansible.builtin.get_url:
+    url: "{{ starship_install_script_url }}"
+    dest: "/tmp/starship_install.sh"
+    mode: "755"
+  changed_when: false
+
+- name: "Make sure Starship install location exists"
+  ansible.builtin.file:
+    path: "{{ starship_install_location }}"
+    state: "directory"
+    mode: "0755"
+
+- name: "Remove old version of Starship if exists"
+  ansible.builtin.file:
+    path: "{{ starship_install_location }}/starship"
+    state: "absent"
+  changed_when: false
+
+- name: "Install or update Starship"
+  ansible.builtin.command:
+    cmd: "/tmp/starship_install.sh -y -b {{ starship_install_location }}"
+    creates: "{{ starship_install_location }}/starship"
+
+- name: "Remove Starship install script"
+  ansible.builtin.file:
+    path: "/tmp/starship_install.sh"
+    state: "absent"
+  changed_when: false
