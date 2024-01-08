@@ -25,6 +25,24 @@
     shell: "/usr/bin/fish"
   become: true
 
+- name: "Check if Fish configuration already exists"
+  ansible.builtin.stat:
+    path: "{{ ansible_env.HOME }}/.config/fish"
+  register: "current_fish_config"
+
+- name: "Remove existing Fish configuration"
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/fish"
+    state: "absent"
+  when: "current_fish_config.stat.exists and not current_fish_config.stat.islnk"
+
+- name: "Install Fish configuration"
+  stow:
+    package: "fish"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"
+
 - name: "Remove old version of Oh My Fish"
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.local/share/omf"

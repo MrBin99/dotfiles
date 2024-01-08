@@ -21,3 +21,10 @@
     repo: "{{ fish_ubuntu_ppa }}"
     state: "absent"
   become: true
+
+- name: "Remove Fish configuration"
+  stow:
+    package: "fish"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "absent"
