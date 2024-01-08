@@ -2,8 +2,23 @@
 - name: "Install and configure new development environment"
   hosts: "all"
   gather_facts: true
+
+  vars:
+    modules_path: "{{ cwd }}/modules"
+
   tasks:
     - name: "Include role 'stow'"
       ansible.builtin.include_role:
         name: "stow"
+        tasks_from: "install"
+
+    - name: "Create the '.config' directory"
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.config"
+        state: "directory"
+        mode: "0755"
+
+    - name: "Include role 'git'"
+      ansible.builtin.include_role:
+        name: "git"
         tasks_from: "install"

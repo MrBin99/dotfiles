@@ -1,0 +1,13 @@
+# ---------------------------------------------------------------------------- #
+#                             MrBin99 - Git Config                             #
+# ---------------------------------------------------------------------------- #
+
+[user]
+name = MrBin99
+email = MrBin99@users.noreply.github.com
+
+[core]
+editor = vim
+
+[init]
+defaultBranch = main

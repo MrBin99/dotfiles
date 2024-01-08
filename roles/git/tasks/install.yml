@@ -1,0 +1,13 @@
+---
+- name: "Install package"
+  ansible.builtin.package:
+    name: "git"
+    state: "present"
+  become: true
+
+- name: "Install Git configuration"
+  stow:
+    package: "git"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"
