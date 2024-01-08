@@ -28,3 +28,10 @@
     path: "/tmp/starship_install.sh"
     state: "absent"
   changed_when: false
+
+- name: "Install Starship configuration"
+  stow:
+    package: "starship"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"

@@ -3,3 +3,10 @@
   ansible.builtin.file:
     path: "{{ starship_install_location }}/starship"
     state: "absent"
+
+- name: "Remove Starship configuration"
+  stow:
+    package: "starship"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "absent"

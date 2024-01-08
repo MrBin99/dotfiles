@@ -1,0 +1,31 @@
+# ---------------------------------------------------------------------------- #
+#                       MrBin99 - Starship prompt config                       #
+# ---------------------------------------------------------------------------- #
+
+format = """$all$fill$time$line_break$character"""
+
+# Add a new line before the prompt start.
+add_newline = true
+
+# Fill the left side of prompt with dots.
+[fill]
+symbol = "·"
+
+# Add date and time to the right side of the prompt.
+[time]
+disabled = false
+format = " [$time]($style)"
+time_format = "%v | %T "
+
+# Show command status code if failed.
+[status]
+disabled = false
+format = "[$symbol $status]($style) "
+
+# Disable battery status in terminal.
+[battery]
+disabled = true
+
+# Disable AWS showing.
+[aws]
+disabled = true
