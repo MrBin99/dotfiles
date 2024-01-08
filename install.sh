@@ -2,4 +2,6 @@
 
 set -e
 
-ansible-playbook -K -i inventory.ini playbooks/install.yml
+export ANSIBLE_ROLES_PATH=$PWD/roles
+
+ansible-playbook -K -M ./library/* -i inventory.ini playbooks/install.yml

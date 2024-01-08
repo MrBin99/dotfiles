@@ -3,6 +3,7 @@
   hosts: "all"
   gather_facts: true
   tasks:
-    - name: "Show facts"
-      ansible.builtin.debug:
-        msg: "{{ ansible_facts }}"
+    - name: "Include role 'stow'"
+      ansible.builtin.include_role:
+        name: "stow"
+        tasks_from: "install"

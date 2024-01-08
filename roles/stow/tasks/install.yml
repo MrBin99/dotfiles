@@ -1,0 +1,7 @@
+---
+- name: "Install package"
+  ansible.builtin.apt:
+    name: "stow"
+    update_cache: true
+    state: "present"
+  become: true
