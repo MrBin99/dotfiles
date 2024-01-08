@@ -1,0 +1,18 @@
+---
+- name: "Check if Bash configuration already exists"
+  ansible.builtin.stat:
+    path: "{{ ansible_env.HOME }}/.bashrc"
+  register: "current_bashrc"
+
+- name: "Remove existing Bash configuration if exists"
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.bashrc"
+    state: "absent"
+  when: "current_bashrc.stat.exists and not current_bashrc.stat.islnk"
+
+- name: "Install Bash configuration"
+  stow:
+    package: "bash"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"

@@ -16,3 +16,8 @@
       ansible.builtin.include_role:
         name: "stow"
         tasks_from: "uninstall"
+
+    - name: "Include role 'bash'"
+      ansible.builtin.include_role:
+        name: "bash"
+        tasks_from: "uninstall"

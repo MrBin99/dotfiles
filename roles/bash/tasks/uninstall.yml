@@ -1,0 +1,7 @@
+---
+- name: "Remove Bash configuration"
+  stow:
+    package: "bash"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "absent"

@@ -22,3 +22,8 @@
       ansible.builtin.include_role:
         name: "git"
         tasks_from: "install"
+
+    - name: "Include role 'bash'"
+      ansible.builtin.include_role:
+        name: "bash"
+        tasks_from: "install"
