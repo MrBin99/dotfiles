@@ -1,0 +1,23 @@
+---
+- name: "Remove Oh My Fish"
+  ansible.builtin.file:
+    path: "{{ fish_oh_my_fish_install_location }}"
+    state: "absent"
+
+- name: "Reset default shell to Bash"
+  ansible.builtin.user:
+    name: "{{ current_user }}"
+    shell: "/bin/bash"
+  become: true
+
+- name: "Remove Fish"
+  ansible.builtin.package:
+    name: "fish"
+    state: "absent"
+  become: true
+
+- name: "Remove Fish repositiory"
+  ansible.builtin.apt_repository:
+    repo: "{{ fish_ubuntu_ppa }}"
+    state: "absent"
+  become: true

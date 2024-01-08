@@ -5,6 +5,7 @@
 
   vars:
     modules_path: "{{ cwd }}/modules"
+    current_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
 
   tasks:
     - name: "Include role 'stow'"
@@ -30,6 +31,11 @@
     - name: "Include role 'bash'"
       ansible.builtin.include_role:
         name: "bash"
+        tasks_from: "install"
+
+    - name: "Include role 'fish'"
+      ansible.builtin.include_role:
+        name: "fish"
         tasks_from: "install"
 
     - name: "Include role 'starship'"

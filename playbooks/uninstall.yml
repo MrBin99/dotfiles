@@ -5,8 +5,24 @@
 
   vars:
     modules_path: "{{ cwd }}/modules"
+    current_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
 
   tasks:
+    - name: "Include role 'starship'"
+      ansible.builtin.include_role:
+        name: "starship"
+        tasks_from: "uninstall"
+
+    - name: "Include role 'fish'"
+      ansible.builtin.include_role:
+        name: "fish"
+        tasks_from: "uninstall"
+
+    - name: "Include role 'bash'"
+      ansible.builtin.include_role:
+        name: "bash"
+        tasks_from: "uninstall"
+
     - name: "Include role 'git'"
       ansible.builtin.include_role:
         name: "git"
@@ -15,14 +31,4 @@
     - name: "Include role 'stow'"
       ansible.builtin.include_role:
         name: "stow"
-        tasks_from: "uninstall"
-
-    - name: "Include role 'bash'"
-      ansible.builtin.include_role:
-        name: "bash"
-        tasks_from: "uninstall"
-
-    - name: "Include role 'starship'"
-      ansible.builtin.include_role:
-        name: "starship"
         tasks_from: "uninstall"

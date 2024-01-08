@@ -1,0 +1,8 @@
+---
+fish_ubuntu_ppa: "ppa:fish-shell/release-3"
+fish_package_dependencies:
+  - "gnupg"
+fish_oh_my_fish_install_script_url: "https://get.oh-my.fish"
+fish_oh_my_fish_install_location: "{{ ansible_env.HOME }}/.local/share/omf"
+fish_oh_my_fish_packages:
+  - "bass"
