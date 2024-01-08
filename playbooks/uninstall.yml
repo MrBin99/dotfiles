@@ -1,0 +1,18 @@
+---
+- name: "Remove development environment"
+  hosts: "all"
+  gather_facts: true
+
+  vars:
+    modules_path: "{{ cwd }}/modules"
+
+  tasks:
+    - name: "Include role 'git'"
+      ansible.builtin.include_role:
+        name: "git"
+        tasks_from: "uninstall"
+
+    - name: "Include role 'stow'"
+      ansible.builtin.include_role:
+        name: "stow"
+        tasks_from: "uninstall"
