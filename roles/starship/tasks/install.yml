@@ -35,3 +35,15 @@
     dir: "{{ modules_path }}"
     target: "{{ ansible_env.HOME }}"
     state: "present"
+
+- name: "Remove Starship completions for Fish"
+  ansible.builtin.file:
+    path: "{{ starship_fish_completions_location }}"
+    state: "absent"
+  changed_when: false
+
+- name: "Install Starship completions for Fish"
+  ansible.builtin.shell:
+    cmd: "starship completions fish > {{ starship_fish_completions_location }}"
+    creates: "{{ starship_fish_completions_location }}"
+  changed_when: false

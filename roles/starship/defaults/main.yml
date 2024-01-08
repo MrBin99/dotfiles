@@ -1,3 +1,4 @@
 ---
 starship_install_script_url: "https://starship.rs/install.sh"
 starship_install_location: "{{ ansible_env.HOME }}/.local/bin"
+starship_fish_completions_location: "{{ ansible_env.HOME }}/.config/fish/completions/starship.fish"
