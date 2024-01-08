@@ -42,3 +42,8 @@
       ansible.builtin.include_role:
         name: "starship"
         tasks_from: "install"
+
+    - name: "Include role 'fish'"
+      ansible.builtin.include_role:
+        name: "fish"
+        tasks_from: "update_completions"

@@ -1,0 +1,5 @@
+---
+- name: "Update Fish completions"
+  ansible.builtin.command:
+    cmd: "fish -c 'fish_update_completions'"
+  changed_when: false
