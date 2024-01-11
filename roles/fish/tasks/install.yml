@@ -47,14 +47,12 @@
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.local/share/omf"
     state: "absent"
-  changed_when: false
 
 - name: "Download Oh My Fish install script"
   ansible.builtin.get_url:
     url: "{{ fish_oh_my_fish_install_script_url }}"
     dest: "/tmp/oh-my-fish-install.sh"
     mode: "755"
-  changed_when: false
 
 - name: "Install or update Oh My Fish"
   ansible.builtin.command:
@@ -65,7 +63,6 @@
   ansible.builtin.file:
     path: "/tmp/oh-my-fish-install.sh"
     state: "absent"
-  changed_when: false
 
 - name: "Install Oh My Fish packages"
   ansible.builtin.command:

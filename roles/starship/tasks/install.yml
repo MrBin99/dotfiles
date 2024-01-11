@@ -4,7 +4,6 @@
     url: "{{ starship_install_script_url }}"
     dest: "/tmp/starship_install.sh"
     mode: "755"
-  changed_when: false
 
 - name: "Make sure Starship install location exists"
   ansible.builtin.file:
@@ -16,7 +15,6 @@
   ansible.builtin.file:
     path: "{{ starship_install_location }}/starship"
     state: "absent"
-  changed_when: false
 
 - name: "Install or update Starship"
   ansible.builtin.command:
@@ -27,7 +25,6 @@
   ansible.builtin.file:
     path: "/tmp/starship_install.sh"
     state: "absent"
-  changed_when: false
 
 - name: "Install Starship configuration"
   stow:
@@ -36,14 +33,7 @@
     target: "{{ ansible_env.HOME }}"
     state: "present"
 
-- name: "Remove Starship completions for Fish"
-  ansible.builtin.file:
-    path: "{{ starship_fish_completions_location }}"
-    state: "absent"
-  changed_when: false
-
 - name: "Install Starship completions for Fish"
   ansible.builtin.shell:
     cmd: "starship completions fish > {{ starship_fish_completions_location }}"
-    creates: "{{ starship_fish_completions_location }}"
-  changed_when: false
+  changed_when: true
