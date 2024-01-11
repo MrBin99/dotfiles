@@ -1,0 +1,35 @@
+---
+- name: "Install Rust dependencies"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "present"
+  with_items: "{{ rust_package_dependencies }}"
+  become: true
+
+- name: "Download Rust install script"
+  ansible.builtin.get_url:
+    url: "{{ rust_install_script_url }}"
+    dest: "/tmp/rust_install.sh"
+    mode: "755"
+
+- name: "Install or update Rust"
+  ansible.builtin.command:
+    cmd: "/tmp/rust_install.sh -y"
+  changed_when: true
+
+- name: "Remove Rust install script"
+  ansible.builtin.file:
+    path: "/tmp/rust_install.sh"
+    state: "absent"
+
+- name: "Install Rust configuration"
+  stow:
+    package: "rust"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"
+
+- name: "Install Rust completions for Fish"
+  ansible.builtin.shell:
+    cmd: "{{ rust_cargo_location }}/bin/rustup completions fish > {{ rust_fish_completions_location }}"
+  changed_when: true

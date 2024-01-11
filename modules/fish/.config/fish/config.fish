@@ -13,6 +13,9 @@ set -U EDITOR vim
 # Sets Starship default configuration path.
 set -Ux STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 
+# Sets Cargo default installation path.
+set -U CARGO_ROOT $HOME/.cargo
+
 # ---------------------------------- Aliases --------------------------------- #
 
 # Git
@@ -36,6 +39,7 @@ abbr update "sudo apt update && sudo apt full-upgrade && sudo apt autoremove && 
 # -------------------------- Add directory to path. -------------------------- #
 
 fish_add_path $HOME/.local/bin
+fish_add_path $CARGO_ROOT/bin
 
 # ---------------------------------- Startup --------------------------------- #
 

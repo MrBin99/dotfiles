@@ -1,0 +1,8 @@
+---
+rust_install_script_url: "https://sh.rustup.rs"
+rust_package_dependencies:
+  - "curl"
+  - "build-essential"
+rust_cargo_location: "{{ ansible_env.HOME }}/.cargo"
+rust_rustup_location: "{{ ansible_env.HOME }}/.rustup"
+rust_fish_completions_location: "{{ ansible_env.HOME }}/.config/fish/completions/rustup.fish"

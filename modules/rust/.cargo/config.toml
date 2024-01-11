@@ -1,0 +1,6 @@
+# ---------------------------------------------------------------------------- #
+#                      MrBin99 - Rust Cargo Configuration                      #
+# ---------------------------------------------------------------------------- #
+
+[cargo-new]
+vcs = "none" # Disable creating a git repository when creating a new project

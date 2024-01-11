@@ -1,0 +1,22 @@
+---
+- name: "Remove Rust configuration"
+  stow:
+    package: "rust"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "absent"
+
+- name: "Remove Rust"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: "absent"
+  with_items:
+    - "{{ rust_cargo_location }}"
+    - "{{ rust_rustup_location }}"
+
+- name: "Remove Rust dependencies"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "absent"
+  with_items: "{{ rust_package_dependencies }}"
+  become: true

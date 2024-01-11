@@ -48,6 +48,11 @@
         name: "docker"
         tasks_from: "install"
 
+    - name: "Include role 'rust'"
+      ansible.builtin.include_role:
+        name: "rust"
+        tasks_from: "install"
+
     - name: "Include role 'fish'"
       ansible.builtin.include_role:
         name: "fish"
