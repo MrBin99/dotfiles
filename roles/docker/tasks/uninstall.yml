@@ -1,0 +1,32 @@
+---
+- name: "Remove Docker packages"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "absent"
+  with_items: "{{ docker_packages }}"
+  become: true
+
+- name: "Remove Docker group"
+  ansible.builtin.group:
+    name: "docker"
+    state: "absent"
+  become: true
+
+- name: "Remove Docker repository"
+  ansible.builtin.apt_repository:
+    repo: "{{ docker_repository }}"
+    state: "absent"
+  become: true
+
+- name: "Remove Docker GPG key"
+  ansible.builtin.file:
+    path: "{{ docker_gpg_key_location }}"
+    state: "absent"
+  become: true
+
+- name: "Remove Docker dependencies"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "absent"
+  with_items: "{{ docker_package_dependencies }}"
+  become: true

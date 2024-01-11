@@ -8,6 +8,11 @@
     current_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
 
   tasks:
+    - name: "Include role 'docker'"
+      ansible.builtin.include_role:
+        name: "docker"
+        tasks_from: "uninstall"
+
     - name: "Include role 'starship'"
       ansible.builtin.include_role:
         name: "starship"

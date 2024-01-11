@@ -43,6 +43,11 @@
         name: "starship"
         tasks_from: "install"
 
+    - name: "Include role 'docker'"
+      ansible.builtin.include_role:
+        name: "docker"
+        tasks_from: "install"
+
     - name: "Include role 'fish'"
       ansible.builtin.include_role:
         name: "fish"

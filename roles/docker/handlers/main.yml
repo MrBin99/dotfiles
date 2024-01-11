@@ -1,0 +1,16 @@
+---
+- name: "Start Docker"
+  ansible.builtin.service:
+    name: "docker"
+    state: "started"
+    enabled: true
+  become: true
+  listen: "restart docker services"
+
+- name: "Start Containerd"
+  ansible.builtin.service:
+    name: "containerd"
+    state: "started"
+    enabled: true
+  become: true
+  listen: "restart docker services"
