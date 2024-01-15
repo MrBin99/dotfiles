@@ -1,0 +1,83 @@
+---
+- name: "Download NVM install script"
+  ansible.builtin.get_url:
+    url: "{{ nvm_install_script_url }}"
+    dest: "/tmp/nvm_install.sh"
+    mode: "755"
+
+- name: "Install NVM"
+  ansible.builtin.shell:
+    cmd: "/tmp/nvm_install.sh"
+    executable: "/bin/bash"
+  changed_when: true
+
+- name: "Remove NVM install script"
+  ansible.builtin.file:
+    path: "/tmp/nvm_install.sh"
+    state: "absent"
+
+- name: "Check if NVM global Node version is installed"
+  ansible.builtin.stat:
+    path: "{{ nvm_location }}/alias/default"
+  register: "node_global_version_installed"
+
+- name: "Get NVM global NodeJS version installed"
+  ansible.builtin.shell:
+    cmd: "set -o pipefail && pyenv exec node --version"
+    executable: "/bin/bash"
+  register: "node_global_version"
+  changed_when: true
+  when: "node_global_version_installed.stat.exists"
+
+- name: "Show NVM global Node version installed"
+  ansible.builtin.debug:
+    msg: "Global Node version is {{ node_global_version.stdout }}"
+  when: "node_global_version_installed.stat.exists"
+
+- name: "Install available NVM Node version"
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail &&
+      source {{ nvm_location }}/nvm.sh &&
+      nvm ls-remote | grep -E 'v[0-9.]+' | awk '{$1=$1};1' | cut -d ' ' -f1 | tail -n 15
+    executable: "/bin/bash"
+  changed_when: true
+  when: "not node_global_version_installed.stat.exists"
+  register: "node_available_versions"
+
+- name: "Which NVM Node version to install"
+  ansible.builtin.pause:
+    prompt: "- {{ node_available_versions.stdout_lines | join('\n- ') }}\n\nType one of the above versions to install "
+    echo: true
+  register: "node_version_to_install"
+  when: "not node_global_version_installed.stat.exists"
+
+- name: "Check if NVM Node version is available"
+  ansible.builtin.fail:
+    msg: "Node version '{{ node_version_to_install.user_input }}' is not available"
+  when: "not node_global_version_installed.stat.exists and node_version_to_install.user_input not in node_available_versions.stdout_lines"
+
+- name: "Install NVM Node version"
+  ansible.builtin.shell:
+    cmd: |
+      source {{ nvm_location }}/nvm.sh &&
+      nvm install {{ node_version_to_install.user_input }} --default
+    executable: "/bin/bash"
+  changed_when: true
+  when: "not node_global_version_installed.stat.exists"
+
+- name: "Install NVM global Node packages"
+  ansible.builtin.shell:
+    cmd: |
+      source {{ nvm_location }}/nvm.sh &&
+      npm install -g {{ item }}
+    executable: "/bin/bash"
+  with_items: "{{ nvm_npm_global_packages }}"
+  changed_when: true
+
+- name: "Install Commitizen configuration"
+  stow:
+    package: "commitizen"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"

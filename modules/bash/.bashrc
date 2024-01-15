@@ -87,4 +87,12 @@ if [[ -d "$HOME/.pyenv" ]]; then
   eval "$(pyenv init -)"
 fi
 
+# Start NVM.
+if [[ -d "$HOME/.nvm" ]]; then
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+fi
+
+# Add terraform completions.
 complete -C /usr/bin/terraform terraform

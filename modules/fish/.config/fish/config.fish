@@ -19,6 +19,9 @@ set -U CARGO_ROOT $HOME/.cargo
 # Sets Pyenv default installation path.
 set -U PYENV_ROOT $HOME/.pyenv
 
+# Sets NVM default installation path.
+set -U NVM_ROOT $HOME/.nvm
+
 # ---------------------------------- Aliases --------------------------------- #
 
 # Git
@@ -58,6 +61,9 @@ if status is-interactive
   and test -d $PYENV_ROOT
   pyenv init - | source
 end
+
+# Load NVM.
+load_nvm > /dev/stderr
 
 # Start Starship prompt.
 if test -f $HOME/.local/bin/starship

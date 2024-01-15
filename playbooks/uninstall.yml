@@ -13,6 +13,11 @@
         name: "terraform"
         tasks_from: "uninstall"
 
+    - name: "Include role 'node'"
+      ansible.builtin.include_role:
+        name: "node"
+        tasks_from: "uninstall"
+
     - name: "Include role 'python'"
       ansible.builtin.include_role:
         name: "python"

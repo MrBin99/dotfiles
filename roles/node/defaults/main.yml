@@ -1,0 +1,10 @@
+---
+nvm_install_script_url: "https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh"
+nvm_location: "{{ ansible_env.HOME }}/.nvm"
+nvm_npm_global_packages:
+  - "npm"
+  - "yarn"
+  - "pnpm"
+  - "mjml"
+  - "commitizen"
+  - "cz-conventional-changelog"

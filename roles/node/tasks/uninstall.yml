@@ -1,0 +1,12 @@
+---
+- name: "Remove NVM"
+  ansible.builtin.file:
+    path: "{{ nvm_location }}"
+    state: "absent"
+
+- name: "Remove Commitizen configuration"
+  stow:
+    package: "commitizen"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "absent"
