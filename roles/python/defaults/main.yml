@@ -1,0 +1,20 @@
+---
+python_package_dependencies:
+  - "python3"
+  - "python3-pip"
+python_pyenv_package_dependencies:
+  - "zlib1g-dev"
+  - "libssl-dev"
+  - "libbz2-dev"
+  - "libsqlite3-dev"
+  - "libreadline-dev"
+  - "libffi-dev"
+  - "liblzma-dev"
+python_pyenv_install_script_url: "https://pyenv.run"
+python_pyenv_location: "{{ ansible_env.HOME }}/.pyenv"
+python_pyenv_pip_global_packages:
+  - "pip"
+  - "pre-commit"
+  - "ansible"
+  - "ansible-lint"
+  - "poetry"

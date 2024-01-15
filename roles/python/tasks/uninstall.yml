@@ -1,0 +1,12 @@
+---
+- name: "Remove Pyenv"
+  ansible.builtin.file:
+    path: "{{ python_pyenv_location }}"
+    state: "absent"
+
+- name: "Remove Poetry configuration"
+  stow:
+    package: "poetry"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "absent"

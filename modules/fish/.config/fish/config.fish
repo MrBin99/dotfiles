@@ -16,6 +16,9 @@ set -Ux STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 # Sets Cargo default installation path.
 set -U CARGO_ROOT $HOME/.cargo
 
+# Sets Pyenv default installation path.
+set -U PYENV_ROOT $HOME/.pyenv
+
 # ---------------------------------- Aliases --------------------------------- #
 
 # Git
@@ -40,8 +43,21 @@ abbr update "sudo apt update && sudo apt full-upgrade && sudo apt autoremove && 
 
 fish_add_path $HOME/.local/bin
 fish_add_path $CARGO_ROOT/bin
+fish_add_path $PYENV_ROOT/bin
 
 # ---------------------------------- Startup --------------------------------- #
+
+# Startup Pyenv in login mode.
+if status is-login
+  and test -d $PYENV_ROOT
+  pyenv init --path | source
+end
+
+# Startup Pyenv in interactive mode.
+if status is-interactive
+  and test -d $PYENV_ROOT
+  pyenv init - | source
+end
 
 # Start Starship prompt.
 if test -f $HOME/.local/bin/starship

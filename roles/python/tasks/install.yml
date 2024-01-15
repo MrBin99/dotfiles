@@ -1,0 +1,140 @@
+---
+- name: "Install Python dependencies"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "present"
+  with_items: "{{ python_package_dependencies }}"
+  become: true
+
+- name: "Check if Python executable exists"
+  ansible.builtin.stat:
+    path: "/bin/python"
+  register: "python_executable"
+
+- name: "Check if Pip executable exists"
+  ansible.builtin.stat:
+    path: "/bin/pip"
+  register: "pip_executable"
+
+- name: "Create link for Python executable"
+  ansible.builtin.file:
+    src: "/bin/python3"
+    dest: "/bin/python"
+    state: "link"
+  become: true
+  when: "not python_executable.stat.exists"
+
+- name: "Create link for Pip executable"
+  ansible.builtin.file:
+    src: "/bin/pip3"
+    dest: "/bin/pip"
+    state: "link"
+  become: true
+  when: "not pip_executable.stat.exists"
+
+- name: "Install Pyenv dependencies"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "present"
+  with_items: "{{ python_pyenv_package_dependencies }}"
+  become: true
+
+- name: "Check if Pyenv is installed"
+  ansible.builtin.stat:
+    path: "{{ python_pyenv_location }}"
+  register: "pyenv_installed"
+
+- name: "Download Pyenv install script"
+  ansible.builtin.get_url:
+    url: "{{ python_pyenv_install_script_url }}"
+    dest: "/tmp/pyenv_install.sh"
+    mode: "755"
+  when: "not pyenv_installed.stat.exists"
+
+- name: "Install Pyenv"
+  ansible.builtin.shell:
+    cmd: "/tmp/pyenv_install.sh"
+    executable: "/bin/bash"
+  changed_when: true
+  when: "not pyenv_installed.stat.exists"
+
+- name: "Remove Pyenv install script"
+  ansible.builtin.file:
+    path: "/tmp/pyenv_install.sh"
+    state: "absent"
+  when: "not pyenv_installed.stat.exists"
+
+- name: "Update Pyenv"
+  ansible.builtin.shell:
+    cmd: "pyenv update"
+    executable: "/bin/bash"
+  changed_when: true
+  when: "pyenv_installed.stat.exists"
+
+- name: "Check if Pyenv global Python version is installed"
+  ansible.builtin.stat:
+    path: "{{ python_pyenv_location }}/shims/python"
+  register: "python_global_version_installed"
+
+- name: "Get Pyenv global Python version installed"
+  ansible.builtin.shell:
+    cmd: "set -o pipefail && pyenv exec python --version | awk '{print $2}'"
+    executable: "/bin/bash"
+  register: "python_global_version"
+  changed_when: true
+  when: "python_global_version_installed.stat.exists"
+
+- name: "Show Pyenv global Python version installed"
+  ansible.builtin.debug:
+    msg: "Global Python version is {{ python_global_version.stdout }}"
+  when: "python_global_version_installed.stat.exists"
+
+- name: "Install available Pyenv Python version"
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail &&
+      pyenv install --list | awk '{$1=$1};1' | grep -E "^[0-9.]+\$" | tail -n 15
+    executable: "/bin/bash"
+  changed_when: true
+  when: "not python_global_version_installed.stat.exists"
+  register: "python_available_versions"
+
+- name: "Which Pyenv Python version to install"
+  ansible.builtin.pause:
+    prompt: "- {{ python_available_versions.stdout_lines | join('\n- ') }}\n\nType one of the above versions to install "
+    echo: true
+  register: "python_version_to_install"
+  when: "not python_global_version_installed.stat.exists"
+
+- name: "Check if Pyenv Python version is available"
+  ansible.builtin.fail:
+    msg: "Python version '{{ python_version_to_install.user_input }}' is not available"
+  when: "not python_global_version_installed.stat.exists and python_version_to_install.user_input not in python_available_versions.stdout_lines"
+
+- name: "Install Pyenv Python version"
+  ansible.builtin.shell:
+    cmd: "pyenv install {{ python_version_to_install.user_input }}"
+    executable: "/bin/bash"
+  changed_when: true
+  when: "not python_global_version_installed.stat.exists"
+
+- name: "Set Pyenv global Python version"
+  ansible.builtin.shell:
+    cmd: "pyenv global {{ python_version_to_install.user_input }}"
+    executable: "/bin/bash"
+  changed_when: true
+  when: "not python_global_version_installed.stat.exists"
+
+- name: "Install Pyenv global Python packages"
+  ansible.builtin.shell:
+    cmd: "pyenv exec pip install --upgrade {{ item }}"
+    executable: "/bin/bash"
+  with_items: "{{ python_pyenv_pip_global_packages }}"
+  changed_when: true
+
+- name: "Install Poetry configuration"
+  stow:
+    package: "poetry"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"

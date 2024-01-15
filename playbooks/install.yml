@@ -53,6 +53,11 @@
         name: "rust"
         tasks_from: "install"
 
+    - name: "Include role 'python'"
+      ansible.builtin.include_role:
+        name: "python"
+        tasks_from: "install"
+
     - name: "Include role 'fish'"
       ansible.builtin.include_role:
         name: "fish"
