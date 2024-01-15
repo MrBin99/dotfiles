@@ -58,6 +58,11 @@
         name: "python"
         tasks_from: "install"
 
+    - name: "Include role 'terraform'"
+      ansible.builtin.include_role:
+        name: "terraform"
+        tasks_from: "install"
+
     - name: "Include role 'fish'"
       ansible.builtin.include_role:
         name: "fish"

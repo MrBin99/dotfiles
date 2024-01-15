@@ -1,0 +1,19 @@
+---
+- name: "Remove Terraform packages"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "absent"
+  with_items: "{{ terraform_packages }}"
+  become: true
+
+- name: "Remove Terraform repository"
+  ansible.builtin.apt_repository:
+    repo: "{{ terraform_repository }}"
+    state: "absent"
+  become: true
+
+- name: "Remove Terraform GPG key"
+  ansible.builtin.file:
+    path: "{{ terraform_gpg_key_location }}"
+    state: "absent"
+  become: true

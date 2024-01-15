@@ -1,0 +1,6 @@
+---
+terraform_gpg_key_url: "https://apt.releases.hashicorp.com/gpg"
+terraform_gpg_key_location: "/etc/apt/keyrings/terraform.gpg"
+terraform_repository: "deb [signed-by={{ terraform_gpg_key_location }}] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+terraform_packages:
+  - "terraform"
