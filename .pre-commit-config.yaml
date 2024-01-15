@@ -12,6 +12,11 @@ repos:
         args: ["--fix=lf"]
       - id: "trailing-whitespace"
 
+  - repo: "https://github.com/ansible/ansible-lint"
+    rev: "v6.22.1"
+    hooks:
+      - id: "ansible-lint"
+
   - repo: "https://github.com/compilerla/conventional-pre-commit"
     rev: "v3.0.0"
     hooks:
