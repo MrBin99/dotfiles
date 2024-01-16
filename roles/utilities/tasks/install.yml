@@ -12,3 +12,9 @@
     dir: "{{ modules_path }}"
     target: "{{ ansible_env.HOME }}"
     state: "present"
+
+- name: "Install MailHog"
+  ansible.builtin.get_url:
+    url: "{{ utilities_mailhog_download_url }}"
+    dest: "{{ utilities_mailhog_location }}"
+    mode: "0755"

@@ -15,3 +15,6 @@ utilities_packges:
   - "net-tools"
   - "cloc"
   - "build-essential"
+
+utilities_mailhog_download_url: "https://github.com/mailhog/mailhog/releases/latest/download/MailHog_linux_amd64"
+utilities_mailhog_location: "{{ ansible_env.HOME }}/.local/bin/mailhog"

@@ -1,4 +1,9 @@
 ---
+- name: "Remove MailHog"
+  ansible.builtin.file:
+    path: "{{ utilities_mailhog_location }}"
+    state: "absent"
+
 - name: "Remove Btop configuration"
   stow:
     package: "btop"
