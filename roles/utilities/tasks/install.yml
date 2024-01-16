@@ -5,3 +5,10 @@
     state: "present"
   with_items: "{{ utilities_packges }}"
   become: true
+
+- name: "Install Btop configuration"
+  stow:
+    package: "btop"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"

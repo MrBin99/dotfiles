@@ -1,6 +1,7 @@
 ---
 utilities_packges:
   - "htop"
+  - "btop"
   - "curl"
   - "wget"
   - "vim"

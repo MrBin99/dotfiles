@@ -1,4 +1,11 @@
 ---
+- name: "Remove Btop configuration"
+  stow:
+    package: "btop"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "absent"
+
 - name: "Remove utility packages"
   ansible.builtin.package:
     name: "{{ item }}"
