@@ -25,7 +25,26 @@ set -U NVM_ROOT $HOME/.nvm
 # Sets PHPENV default installation path.
 set -U PHPENV_ROOT $HOME/.phpenv
 
+# Use "Bat" as viewer for man pages.
+set -Ux MANPAGER "sh -c 'col -bx | batcat --theme OneHalfDark -l man -p'"
+
 # ---------------------------------- Aliases --------------------------------- #
+
+# Exa.
+alias ls "exa --icons --color=always --group-directories-first"
+alias lt "ls -T -L 5"
+alias ll "ls -lag --header"
+alias llt "ls -Tgla -L 5 --header"
+
+# Ripgrep.
+alias grep "rg"
+
+# Bat.
+alias bat "batcat --theme OneHalfDark"
+alias less "bat"
+
+# Duf.
+alias df "duf"
 
 # Git
 alias glo "git log --graph --pretty --format='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"

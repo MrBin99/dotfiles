@@ -1,0 +1,7 @@
+---
+- name: "Install utility packages"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "present"
+  with_items: "{{ utilities_packges }}"
+  become: true

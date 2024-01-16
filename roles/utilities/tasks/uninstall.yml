@@ -1,0 +1,7 @@
+---
+- name: "Remove utility packages"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "absent"
+  with_items: "{{ utilities_packges }}"
+  become: true

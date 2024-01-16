@@ -1,0 +1,16 @@
+---
+utilities_packges:
+  - "htop"
+  - "curl"
+  - "wget"
+  - "vim"
+  - "make"
+  - "unzip"
+  - "bat"
+  - "exa"
+  - "duf"
+  - "rsync"
+  - "dnsutils"
+  - "net-tools"
+  - "cloc"
+  - "build-essential"
