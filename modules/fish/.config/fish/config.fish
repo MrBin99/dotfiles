@@ -22,6 +22,9 @@ set -U PYENV_ROOT $HOME/.pyenv
 # Sets NVM default installation path.
 set -U NVM_ROOT $HOME/.nvm
 
+# Sets PHPENV default installation path.
+set -U PHPENV_ROOT $HOME/.phpenv
+
 # ---------------------------------- Aliases --------------------------------- #
 
 # Git
@@ -47,6 +50,7 @@ abbr update "sudo apt update && sudo apt full-upgrade && sudo apt autoremove && 
 fish_add_path $HOME/.local/bin
 fish_add_path $CARGO_ROOT/bin
 fish_add_path $PYENV_ROOT/bin
+fish_add_path $PHPENV_ROOT/bin
 
 # ---------------------------------- Startup --------------------------------- #
 
@@ -60,6 +64,12 @@ end
 if status is-interactive
   and test -d $PYENV_ROOT
   pyenv init - | source
+end
+
+# Startup PHPenv.
+if status is-interactive
+  and test -d $PHPENV_ROOT
+  phpenv init - | source
 end
 
 # Load NVM.

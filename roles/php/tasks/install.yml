@@ -1,0 +1,80 @@
+---
+- name: "Install PHP dependencies"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "present"
+  with_items: "{{ php_phpenv_package_dependencies }}"
+  become: true
+
+- name: "Download PHPEnv install script"
+  ansible.builtin.get_url:
+    url: "{{ php_phpenv_install_script_url }}"
+    dest: "/tmp/phpenv_install.sh"
+    mode: "755"
+
+- name: "Install PHPEnv"
+  ansible.builtin.shell:
+    cmd: "/tmp/phpenv_install.sh"
+    executable: "/bin/bash"
+  changed_when: true
+
+- name: "Remove PHPEnv install script"
+  ansible.builtin.file:
+    path: "/tmp/phpenv_install.sh"
+    state: "absent"
+
+- name: "Check if PHPEnv global PHP version is installed"
+  ansible.builtin.stat:
+    path: "{{ php_phpenv_location }}/shims/php"
+  register: "php_global_version_installed"
+
+- name: "Get PHPEnv global PHP version installed"
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail &&
+      phpenv exec php --version | awk '{print $2}' | head -n 1
+    executable: "/bin/bash"
+  register: "php_global_version"
+  changed_when: true
+  when: "php_global_version_installed.stat.exists"
+
+- name: "Show PHPEnv global PHP version installed"
+  ansible.builtin.debug:
+    msg: "Global PHP version is {{ php_global_version.stdout }}"
+  when: "php_global_version_installed.stat.exists"
+
+- name: "Install available PHPEnv PHP version"
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail &&
+      phpenv install --list | awk '{$1=$1};1' | grep -E "^[0-9.]+\$" | tail -n 15
+    executable: "/bin/bash"
+  changed_when: true
+  when: "not php_global_version_installed.stat.exists"
+  register: "php_available_versions"
+
+- name: "Which PHPEnv PHP version to install"
+  ansible.builtin.pause:
+    prompt: "- {{ php_available_versions.stdout_lines | join('\n- ') }}\n\nType one of the above versions to install "
+    echo: true
+  register: "php_version_to_install"
+  when: "not php_global_version_installed.stat.exists"
+
+- name: "Check if PHPEnv PHP version is available"
+  ansible.builtin.fail:
+    msg: "PHP version '{{ php_version_to_install.user_input }}' is not available"
+  when: "not php_global_version_installed.stat.exists and php_version_to_install.user_input not in php_available_versions.stdout_lines"
+
+- name: "Install PHPEnv PHP version"
+  ansible.builtin.shell:
+    cmd: "phpenv install -i dev {{ php_version_to_install.user_input }}"
+    executable: "/bin/bash"
+  changed_when: true
+  when: "not php_global_version_installed.stat.exists"
+
+- name: "Set PHPEnv global PHP version"
+  ansible.builtin.shell:
+    cmd: "phpenv global {{ php_version_to_install.user_input }}"
+    executable: "/bin/bash"
+  changed_when: true
+  when: "not php_global_version_installed.stat.exists"

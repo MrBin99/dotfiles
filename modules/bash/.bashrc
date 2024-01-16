@@ -94,5 +94,12 @@ if [[ -d "$HOME/.nvm" ]]; then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 fi
 
+# Start Phpenv.
+if [[ -d "$HOME/.phpenv" ]]; then
+  export PHPENV_ROOT="$HOME/.phpenv"
+  export PATH="$PHPENV_ROOT/bin:$PATH"
+  eval "$(phpenv init bash -)"
+fi
+
 # Add terraform completions.
 complete -C /usr/bin/terraform terraform

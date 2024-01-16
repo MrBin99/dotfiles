@@ -1,0 +1,12 @@
+---
+- name: "Remove PHPEnv"
+  ansible.builtin.file:
+    path: "{{ php_phpenv_location }}"
+    state: "absent"
+
+- name: "Remove PHP dependencies"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "absent"
+  with_items: "{{ php_phpenv_package_dependencies }}"
+  become: true

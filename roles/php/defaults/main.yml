@@ -1,0 +1,15 @@
+---
+php_phpenv_package_dependencies:
+  - "autoconf"
+  - "libzip-dev"
+  - "libxslt1-dev"
+  - "libtidy-dev"
+  - "libonig-dev"
+  - "libjpeg-dev"
+  - "libpng-dev"
+  - "libcurl4-openssl-dev"
+  - "libcurl4"
+  - "libxml2-dev"
+  - "pkg-config"
+php_phpenv_install_script_url: "https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer"
+php_phpenv_location: "{{ ansible_env.HOME }}/.phpenv"
