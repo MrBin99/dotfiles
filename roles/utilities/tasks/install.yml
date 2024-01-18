@@ -18,3 +18,26 @@
     url: "{{ utilities_mailhog_download_url }}"
     dest: "{{ utilities_mailhog_location }}"
     mode: "0755"
+
+- name: "Install yt-dlp"
+  ansible.builtin.get_url:
+    url: "{{ utilities_yt_dlp_download_url }}"
+    dest: "{{ utilities_yt_dlp_location }}"
+    mode: "0755"
+
+- name: "Download yt-dlp sources"
+  ansible.builtin.unarchive:
+    src: "{{ utilities_yt_dlp_fish_sources_download_url }}"
+    dest: "/tmp/"
+    remote_src: true
+
+- name: "Install yt-dlp Fish completions"
+  ansible.builtin.copy:
+    src: "/tmp/yt-dlp/completions/fish/yt-dlp.fish"
+    dest: "{{ utilities_yt_dlp_fish_completions_location }}"
+    mode: "0644"
+
+- name: "Delete yt-dlp sources"
+  ansible.builtin.file:
+    path: "/tmp/yt-dlp"
+    state: "absent"
