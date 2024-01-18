@@ -43,6 +43,11 @@
         name: "starship"
         tasks_from: "uninstall"
 
+    - name: "Include role 'utilities'"
+      ansible.builtin.include_role:
+        name: "utilities"
+        tasks_from: "uninstall"
+
     - name: "Include role 'fish'"
       ansible.builtin.include_role:
         name: "fish"
@@ -56,11 +61,6 @@
     - name: "Include role 'git'"
       ansible.builtin.include_role:
         name: "git"
-        tasks_from: "uninstall"
-
-    - name: "Include role 'utilities'"
-      ansible.builtin.include_role:
-        name: "utilities"
         tasks_from: "uninstall"
 
     - name: "Include role 'stow'"
