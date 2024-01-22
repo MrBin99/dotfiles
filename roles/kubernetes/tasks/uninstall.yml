@@ -1,0 +1,26 @@
+---
+- name: "Remove Kubectl packages"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "absent"
+  with_items: "{{ kubernetes_kubectl_packages }}"
+  become: true
+
+- name: "Remove Kubectl repository"
+  ansible.builtin.apt_repository:
+    repo: "{{ kubernetes_kubectl_repository }}"
+    state: "absent"
+  become: true
+
+- name: "Remove Kubectl GPG key"
+  ansible.builtin.file:
+    path: "{{ kubernetes_kubectl_gpg_key_location }}"
+    state: "absent"
+  become: true
+
+- name: "Remove Kubectl dependencies"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "absent"
+  with_items: "{{ kubernetes_kubectl_package_dependencies }}"
+  become: true

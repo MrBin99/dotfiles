@@ -8,6 +8,11 @@
     current_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
 
   tasks:
+    - name: "Include role 'kubernetes'"
+      ansible.builtin.include_role:
+        name: "kubernetes"
+        tasks_from: "uninstall"
+
     - name: "Include role 'terraform'"
       ansible.builtin.include_role:
         name: "terraform"
