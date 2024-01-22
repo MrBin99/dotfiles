@@ -49,3 +49,9 @@
     groups: "docker"
     append: true
   become: true
+
+- name: "Install Docker Fish completions"
+  ansible.builtin.shell:
+    cmd: "docker completion fish > {{ ansible_env.HOME }}/.config/fish/completions/docker.fish"
+    executable: "/usr/bin/fish"
+  changed_when: true
