@@ -1,0 +1,23 @@
+---
+- name: "Remove exising Nvim installation"
+  ansible.builtin.file:
+    path: "{{ nvim_install_location }}/nvim"
+    state: "absent"
+
+- name: "Download Nvim"
+  ansible.builtin.unarchive:
+    src: "{{ nvim_install_url }}"
+    dest: "{{ nvim_install_location }}"
+    remote_src: true
+
+- name: "Rename Nvim directory"
+  ansible.builtin.command:
+    cmd: "mv {{ nvim_install_location }}/nvim-linux64 {{ nvim_install_location }}/nvim"
+    creates: "{{ nvim_install_location }}/nvim"
+
+- name: "Install Nvim configuration"
+  stow:
+    package: "nvim"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"

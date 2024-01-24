@@ -1,0 +1,3 @@
+---
+nvim_install_url: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
+nvim_install_location: "{{ ansible_env.HOME }}/.local/bin"

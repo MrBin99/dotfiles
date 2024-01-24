@@ -1,0 +1,12 @@
+---
+- name: "Remove Nvim configuration"
+  stow:
+    package: "nvim"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "absent"
+
+- name: "Remove Nvim"
+  ansible.builtin.file:
+    path: "{{ nvim_install_location }}/nvim"
+    state: "absent"

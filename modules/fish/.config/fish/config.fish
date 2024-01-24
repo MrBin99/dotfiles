@@ -25,6 +25,9 @@ set -U NVM_ROOT $HOME/.nvm
 # Sets PHPENV default installation path.
 set -U PHPENV_ROOT $HOME/.phpenv
 
+# Sets Nvim default installation path.
+set -U NVIM_ROOT $HOME/.local/bin/nvim
+
 # Use "Bat" as viewer for man pages.
 set -Ux MANPAGER "sh -c 'col -bx | batcat --theme OneHalfDark -l man -p'"
 
@@ -45,6 +48,9 @@ alias less "bat"
 
 # Duf.
 alias df "duf"
+
+# Nvim.
+alias vim "nvim"
 
 # Git
 alias glo "git log --graph --pretty --format='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -70,6 +76,7 @@ fish_add_path $HOME/.local/bin
 fish_add_path $CARGO_ROOT/bin
 fish_add_path $PYENV_ROOT/bin
 fish_add_path $PHPENV_ROOT/bin
+fish_add_path $NVIM_ROOT/bin
 
 # ---------------------------------- Startup --------------------------------- #
 
