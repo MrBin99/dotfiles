@@ -1,0 +1,25 @@
+---
+- name: "Check if WSL configuration is installed"
+  ansible.builtin.stat:
+    path: "/etc/wsl.conf"
+  register: "wsl_conf"
+  become: true
+
+- name: "Remove WSL configuration if exists"
+  ansible.builtin.file:
+    path: "/etc/wsl.conf"
+    state: "absent"
+  become: true
+  when: "wsl_conf.stat.exists and not wsl_conf.stat.islnk"
+
+- name: "Install WSL configuration"
+  stow:
+    package: "wsl"
+    dir: "{{ modules_path }}"
+    target: "/"
+    state: "present"
+  become: true
+  notify: "reboot wsl"
+
+- name: "Flush handlers"
+  ansible.builtin.meta: "flush_handlers"

@@ -1,0 +1,11 @@
+---
+- name: "Check if running on WSL"
+  ansible.builtin.shell:
+    cmd: "set -o pipefail && uname -r | grep -i microsoft"
+    executable: "/bin/bash"
+  register: "wsl_check"
+  changed_when: true
+
+- name: "Register if running on WSL"
+  ansible.builtin.set_fact:
+    is_wsl: "{{ wsl_check.rc == 0 }}"

@@ -1,0 +1,5 @@
+---
+- name: "Need WSL restart"
+  ansible.builtin.fail:
+    msg: "You need to reboot WSL to apply changes."
+  listen: "reboot wsl"

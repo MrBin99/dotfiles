@@ -1,0 +1,8 @@
+---
+- name: "Remove WSL configuration"
+  stow:
+    package: "wsl"
+    dir: "{{ modules_path }}"
+    target: "/"
+    state: "absent"
+  become: true
