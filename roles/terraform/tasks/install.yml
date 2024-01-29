@@ -31,6 +31,6 @@
 
 - name: "Install Terraform Fish completions"
   ansible.builtin.shell:
-    cmd: "terraform -install-autocomplete"
+    cmd: "terraform -install-autocomplete || true"
     executable: "/usr/bin/fish"
     creates: "{{ ansible_env.HOME }}/.config/fish/completions/terraform.fish"
