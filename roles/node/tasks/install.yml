@@ -23,7 +23,10 @@
 
 - name: "Get NVM global NodeJS version installed"
   ansible.builtin.shell:
-    cmd: "set -o pipefail && pyenv exec node --version"
+    cmd: |
+      set -o pipefail &&
+      source {{ node_nvm_location }}/nvm.sh &&
+      nvm exec node
     executable: "/bin/bash"
   register: "node_global_version"
   changed_when: true
