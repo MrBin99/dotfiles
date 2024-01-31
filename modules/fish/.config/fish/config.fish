@@ -80,6 +80,9 @@ fish_add_path $NVIM_ROOT/bin
 
 # ---------------------------------- Startup --------------------------------- #
 
+# Load NVM.
+load_nvm > /dev/stderr
+
 # Startup Pyenv in login mode.
 if status is-login
   and test -d $PYENV_ROOT
@@ -97,9 +100,6 @@ if status is-interactive
   and test -d $PHPENV_ROOT
   phpenv init - | source
 end
-
-# Load NVM.
-load_nvm > /dev/stderr
 
 # Start Starship prompt.
 if test -f $HOME/.local/bin/starship
