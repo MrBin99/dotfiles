@@ -10,6 +10,10 @@ python_pyenv_package_dependencies:
   - "libreadline-dev"
   - "libffi-dev"
   - "liblzma-dev"
+  - "libpq-dev"
+  - "libsasl2-dev"
+  - "libldap2-dev"
+  - "libssl-dev"
 python_pyenv_install_script_url: "https://pyenv.run"
 python_pyenv_location: "{{ ansible_env.HOME }}/.pyenv"
 python_pyenv_pip_global_packages:
