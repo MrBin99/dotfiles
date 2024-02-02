@@ -20,3 +20,8 @@ commit = false
 ff = true
 rebase = true
 
+[fetch]
+prune = true
+
+[diff]
+colorMoved = zebra
