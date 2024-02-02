@@ -13,5 +13,10 @@ editor = vim
 defaultBranch = main
 
 [merge]
-ff = no
-commit = no
+ff = false
+commit = false
+
+[pull]
+ff = true
+rebase = true
+
