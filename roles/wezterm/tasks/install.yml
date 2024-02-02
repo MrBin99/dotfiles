@@ -1,0 +1,7 @@
+---
+- name: "Install Wezterm configuration"
+  stow:
+    package: "wezterm"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"

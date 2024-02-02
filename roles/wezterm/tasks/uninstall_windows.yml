@@ -1,0 +1,6 @@
+---
+- name: "Remove Wezterm configuration"
+  ansible.builtin.file:
+    path: "{{ windows_home_path }}/.wezterm.lua"
+    state: "absent"
+  become: true

@@ -9,3 +9,16 @@
 - name: "Register if running on WSL"
   ansible.builtin.set_fact:
     is_wsl: "{{ wsl_check.rc == 0 }}"
+
+- name: "Register home path of Windows user"
+  ansible.builtin.shell:
+    cmd: "wslpath $(cmd.exe /c '<nul set /p=%UserProfile%' 2>/dev/null)"
+    executable: "/bin/bash"
+  when: "is_wsl"
+  register: "windows_home_path"
+  changed_when: true
+
+- name: "Set home path of Windows user"
+  ansible.builtin.set_fact:
+    windows_home_path: "{{ windows_home_path.stdout }}"
+  when: "is_wsl"

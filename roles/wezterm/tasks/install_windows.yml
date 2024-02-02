@@ -1,0 +1,8 @@
+---
+- name: "Install Wezterm configuration"
+  ansible.builtin.copy:
+    src: "{{ modules_path }}/wezterm/.config/wezterm/wezterm.lua"
+    dest: "{{ windows_home_path }}/.wezterm.lua"
+    mode: "0644"
+    force: true
+  become: true

@@ -53,6 +53,17 @@
         name: "utilities"
         tasks_from: "install"
 
+    - name: "Include role 'wezterm'"
+      ansible.builtin.include_role:
+        name: "wezterm"
+        tasks_from: "install"
+
+    - name: "Include role 'wezterm' (Windows)"
+      ansible.builtin.include_role:
+        name: "wezterm"
+        tasks_from: "install_windows"
+      when: "is_wsl"
+
     - name: "Include role 'starship'"
       ansible.builtin.include_role:
         name: "starship"

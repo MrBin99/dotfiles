@@ -8,6 +8,10 @@
     current_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
 
   tasks:
+    - name: "Include WSL check file"
+      ansible.builtin.include_tasks:
+        file: "{{ playbook_dir }}/includes/wsl.yml"
+
     - name: "Include role 'nvim'"
       ansible.builtin.include_role:
         name: "nvim"
@@ -51,6 +55,17 @@
     - name: "Include role 'starship'"
       ansible.builtin.include_role:
         name: "starship"
+        tasks_from: "uninstall"
+
+    - name: "Include role 'wezterm' (Windows)"
+      ansible.builtin.include_role:
+        name: "wezterm"
+        tasks_from: "uninstall_windows"
+      when: "is_wsl"
+
+    - name: "Include role 'wezterm'"
+      ansible.builtin.include_role:
+        name: "wezterm"
         tasks_from: "uninstall"
 
     - name: "Include role 'utilities'"
