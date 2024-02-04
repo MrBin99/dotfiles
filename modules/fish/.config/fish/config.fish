@@ -87,12 +87,6 @@ fish_add_path $NVIM_ROOT/bin
 # Load NVM.
 load_nvm > /dev/stderr
 
-# Startup Pyenv in login mode.
-if status is-login
-  and test -d $PYENV_ROOT
-  pyenv init --path | source
-end
-
 # Startup Pyenv in interactive mode.
 if status is-interactive
   and test -d $PYENV_ROOT
