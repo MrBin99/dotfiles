@@ -70,6 +70,10 @@ alias rm 'rm -i'
 # Update and upgrade system.
 abbr update "sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt purge"
 
+# -------------------------------- Keybindings ------------------------------- #
+
+bind --user \b backward-kill-word
+
 # -------------------------- Add directory to path. -------------------------- #
 
 fish_add_path $HOME/.local/bin
