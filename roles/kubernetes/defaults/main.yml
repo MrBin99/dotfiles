@@ -1,8 +1,4 @@
 ---
-kubernetes_kubectl_gpg_key_url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
-kubernetes_kubectl_gpg_key_location: "/etc/apt/keyrings/kubectl.gpg"
-kubernetes_kubectl_repository: "deb [signed-by={{ kubernetes_kubectl_gpg_key_location }}] https://apt.kubernetes.io/ kubernetes-xenial main"
-kubernetes_kubectl_package_dependencies:
-  - "apt-transport-https"
-kubernetes_kubectl_packages:
-  - "kubectl"
+kubernetes_kubectl_latest_version_url: "https://dl.k8s.io/release/stable.txt"
+kubernetes_kubectl_download_url: "https://dl.k8s.io/release/{{ lookup('ansible.builtin.url', kubernetes_kubectl_latest_version_url) }}/bin/linux/amd64/kubectl"
+kubernetes_kubectl_install_location: "{{ ansible_env.HOME }}/.local/bin/kubectl"
