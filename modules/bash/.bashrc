@@ -75,6 +75,9 @@ fi
 # Add local stuff to the path.
 export PATH="$HOME/.local/bin:$PATH"
 
+# Add Snap packages to the path.
+export PATH="/snap/bin:$PATH"
+
 # Add Rust stuff to the path.
 if [[ -d "$HOME/.cargo/bin" ]]; then
   . "$HOME/.cargo/env"
