@@ -28,6 +28,9 @@ set -U PHPENV_ROOT $HOME/.phpenv
 # Sets Nvim default installation path.
 set -U NVIM_ROOT $HOME/.local/bin/nvim
 
+# Sets Snap default installation path.
+set -U SNAP_ROOT /snap
+
 # Use "Bat" as viewer for man pages.
 set -Ux MANPAGER "sh -c 'col -bx | batcat --theme OneHalfDark -l man -p'"
 
@@ -77,6 +80,7 @@ bind --user \b backward-kill-word
 # -------------------------- Add directory to path. -------------------------- #
 
 fish_add_path $HOME/.local/bin
+fish_add_path $SNAP_ROOT/bin
 fish_add_path $CARGO_ROOT/bin
 fish_add_path $PYENV_ROOT/bin
 fish_add_path $PHPENV_ROOT/bin
