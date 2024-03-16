@@ -4,6 +4,18 @@
     path: "{{ utilities_mailpit_location }}"
     state: "absent"
 
+- name: "Remove Lazygit"
+  ansible.builtin.file:
+    path: "{{ utilities_lazygit_location }}"
+    state: "absent"
+
+- name: "Remove Lazygit configuration"
+  stow:
+    package: "lazygit"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "absent"
+
 - name: "Remove Btop configuration"
   stow:
     package: "btop"

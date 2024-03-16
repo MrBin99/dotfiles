@@ -56,6 +56,7 @@ alias df "duf"
 alias vim "nvim"
 
 # Git
+alias lg "lazygit"
 alias glo "git log --graph --pretty --format='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an> %C(cyan)<%ae>%Creset' --abbrev-commit"
 alias gaa "git add -A"
 alias gs "git status"

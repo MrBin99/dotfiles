@@ -16,6 +16,7 @@ utilities_packges:
   - "net-tools"
   - "cloc"
   - "build-essential"
+  - "jq"
 
 utilities_mailpit_install_url: "https://raw.githubusercontent.com/axllent/mailpit/develop/install.sh"
 utilities_mailpit_location: "/usr/local/bin/mailpit"
@@ -24,3 +25,7 @@ utilities_yt_dlp_download_url: "https://github.com/yt-dlp/yt-dlp/releases/latest
 utilities_yt_dlp_location: "{{ ansible_env.HOME }}/.local/bin/yt-dlp"
 utilities_yt_dlp_fish_sources_download_url: "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.tar.gz"
 utilities_yt_dlp_fish_completions_location: "{{ ansible_env.HOME }}/.config/fish/completions/yt-dlp.fish"
+
+utilities_lazygit_latest_release_url: "https://api.github.com/repos/jesseduffield/lazygit/releases/latest"
+utilities_lazygit_folder_location: "{{ ansible_env.HOME }}/.local/bin"
+utilities_lazygit_location: "{{ utilities_lazygit_folder_location }}/lazygit"
