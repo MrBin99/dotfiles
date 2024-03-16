@@ -17,3 +17,14 @@ keybinding:
   universal:
     quit: "<esc>"
     return: "q"
+
+customCommands:
+  - key: "Z"
+    context: "global"
+    command: "git reset --soft HEAD~"
+    loadingText: "Undoing last commit..."
+    description: "Undo last commit"
+    prompts:
+      - type: "confirm"
+        title: "Undo last commit"
+        body: "Are you sure you want to undo the last commit?"
