@@ -1,7 +1,7 @@
 ---
-- name: "Remove MailHog"
+- name: "Remove Mailpit"
   ansible.builtin.file:
-    path: "{{ utilities_mailhog_location }}"
+    path: "{{ utilities_mailpit_location }}"
     state: "absent"
 
 - name: "Remove Btop configuration"

@@ -13,11 +13,34 @@
     target: "{{ ansible_env.HOME }}"
     state: "present"
 
-- name: "Install MailHog"
+- name: "Remove old Mailpit installation"
+  ansible.builtin.file:
+    path: "{{ utilities_mailpit_location }}"
+    state: "absent"
+  become: true
+
+- name: "Download Mailpit install script"
   ansible.builtin.get_url:
-    url: "{{ utilities_mailhog_download_url }}"
-    dest: "{{ utilities_mailhog_location }}"
+    url: "{{ utilities_mailpit_install_url }}"
+    dest: "/tmp/mailpit.sh"
     mode: "0755"
+
+- name: "Install Mailpit"
+  ansible.builtin.command:
+    cmd: "/tmp/mailpit.sh"
+    creates: "{{ utilities_mailpit_location }}"
+  become: true
+
+- name: "Remove Mailpit install script"
+  ansible.builtin.file:
+    path: "/tmp/mailpit.sh"
+    state: "absent"
+
+- name: "Install Mailpit Fish completions"
+  ansible.builtin.shell:
+    cmd: "mailpit completion fish > {{ ansible_env.HOME }}/.config/fish/completions/mailpit.fish"
+    executable: "/usr/bin/fish"
+  changed_when: true
 
 - name: "Install yt-dlp"
   ansible.builtin.get_url:
