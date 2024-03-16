@@ -3,6 +3,8 @@ disableStartupPopups: true
 gui:
   nerdFontsVersion: "3"
   border: "rounded"
+  timeFormat: "02/01/2006 15:04"
+  shortTimeFormat: "02/01/2006 15:04"
   theme:
     selectedLineBgColor:
       - "#181a1f"
