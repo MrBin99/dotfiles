@@ -12,3 +12,8 @@ gui:
 
 git:
   autoFetch: false
+
+keybinding:
+  universal:
+    quit: "<esc>"
+    return: "q"
