@@ -68,6 +68,11 @@
         name: "wezterm"
         tasks_from: "uninstall"
 
+    - name: "Include role 'lazygit'"
+      ansible.builtin.include_role:
+        name: "lazygit"
+        tasks_from: "uninstall"
+
     - name: "Include role 'utilities'"
       ansible.builtin.include_role:
         name: "utilities"

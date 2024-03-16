@@ -1,0 +1,40 @@
+---
+- name: "Remove old Lazygit installation"
+  ansible.builtin.file:
+    path: "{{ lazygit_location }}"
+    state: "absent"
+
+- name: "Get Lazygit latest version"
+  ansible.builtin.shell:
+    cmd: "set -o pipefail && curl -s {{ lazygit_latest_release_url }} | jq -r '.assets | map(select(.browser_download_url | contains(\"Linux_x86_64\"))) | first | .browser_download_url'"
+    executable: "/bin/bash"
+  register: "lazygit_download_url"
+  changed_when: false
+
+- name: "Download Lazygit"
+  ansible.builtin.get_url:
+    url: "{{ lazygit_download_url.stdout }}"
+    dest: "/tmp/lazygit.tar.gz"
+    mode: "0644"
+  when: "lazygit_download_url.stdout"
+
+- name: "Install Lazygit"
+  ansible.builtin.unarchive:
+    src: "/tmp/lazygit.tar.gz"
+    dest: "{{ lazygit_folder_location }}"
+    include:
+      - "lazygit"
+    remote_src: true
+  when: "lazygit_download_url.stdout"
+
+- name: "Remove Lazygit tarball"
+  ansible.builtin.file:
+    path: "/tmp/lazygit.tar.gz"
+    state: "absent"
+
+- name: "Install Lazygit configuration"
+  stow:
+    package: "lazygit"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"

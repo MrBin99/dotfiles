@@ -53,6 +53,11 @@
         name: "utilities"
         tasks_from: "install"
 
+    - name: "Include role 'lazygit'"
+      ansible.builtin.include_role:
+        name: "lazygit"
+        tasks_from: "install"
+
     - name: "Include role 'wezterm'"
       ansible.builtin.include_role:
         name: "wezterm"
