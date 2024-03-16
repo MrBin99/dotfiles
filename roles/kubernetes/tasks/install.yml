@@ -10,3 +10,32 @@
     cmd: "kubectl completion fish > {{ ansible_env.HOME }}/.config/fish/completions/kubectl.fish"
     executable: "/usr/bin/fish"
   changed_when: true
+
+- name: "Remove old Helm installation"
+  ansible.builtin.file:
+    path: "{{ kubernetes_helm_install_location }}"
+    state: "absent"
+  become: true
+
+- name: "Download Helm install script"
+  ansible.builtin.get_url:
+    url: "{{ kubernetes_helm_install_script_url }}"
+    dest: "/tmp/helm.sh"
+    mode: "755"
+
+- name: "Install or update Helm"
+  ansible.builtin.command:
+    cmd: "/tmp/helm.sh --no-sudo"
+    creates: "{{ kubernetes_helm_install_location }}"
+  become: true
+
+- name: "Remove Helm install script"
+  ansible.builtin.file:
+    path: "/tmp/helm.sh"
+    state: "absent"
+
+- name: "Install Helm Fish completions"
+  ansible.builtin.shell:
+    cmd: "helm completion fish > {{ ansible_env.HOME }}/.config/fish/completions/helm.fish"
+    executable: "/usr/bin/fish"
+  changed_when: true

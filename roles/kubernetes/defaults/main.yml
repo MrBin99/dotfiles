@@ -2,3 +2,5 @@
 kubernetes_kubectl_latest_version_url: "https://dl.k8s.io/release/stable.txt"
 kubernetes_kubectl_download_url: "https://dl.k8s.io/release/{{ lookup('ansible.builtin.url', kubernetes_kubectl_latest_version_url) }}/bin/linux/amd64/kubectl"
 kubernetes_kubectl_install_location: "{{ ansible_env.HOME }}/.local/bin/kubectl"
+kubernetes_helm_install_script_url: "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
+kubernetes_helm_install_location: "/usr/local/bin/helm"

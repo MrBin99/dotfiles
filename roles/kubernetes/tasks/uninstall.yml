@@ -1,4 +1,9 @@
 ---
+- name: "Remove Helm"
+  ansible.builtin.file:
+    path: "{{ kubernetes_helm_install_location }}"
+    state: "absent"
+
 - name: "Remove Kubectl"
   ansible.builtin.file:
     path: "{{ kubernetes_kubectl_install_location }}"
