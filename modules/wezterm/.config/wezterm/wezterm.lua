@@ -26,9 +26,11 @@ end
 -- -------------------------------------------------------------------------- --
 
 -- Colors and fonts.
-local TEXT_COLOR = "#abb2bf"
-local BACKGROUND_COLOR = "#181a1f"
-local EDITOR_BACKGROUND_COLOR = "#282c34"
+local TEXT_COLOR = '#abb2bf'
+local BACKGROUND_COLOR = '#181a1f'
+local EDITOR_BACKGROUND_COLOR = '#282c34'
+local EDITOR_BACKGROUND_COLOR_HOVER = '#1c1f24'
+local SPLIT_COLOR = '#4e5767'
 
 config.color_scheme = 'OneDark (base16)'
 config.colors = {
@@ -39,41 +41,41 @@ config.colors = {
       fg_color = TEXT_COLOR,
     },
     inactive_tab = {
-      bg_color = '#181a1f',
+      bg_color = BACKGROUND_COLOR,
       fg_color = TEXT_COLOR,
     },
     inactive_tab_hover = {
-      bg_color = '#1c1f24',
+      bg_color = EDITOR_BACKGROUND_COLOR_HOVER,
       fg_color = TEXT_COLOR,
     },
     new_tab = {
-      bg_color = '#181a1f',
+      bg_color = BACKGROUND_COLOR,
       fg_color = TEXT_COLOR,
     },
     new_tab_hover = {
-      bg_color = '#1c1f24',
+      bg_color = EDITOR_BACKGROUND_COLOR_HOVER,
       fg_color = TEXT_COLOR,
     },
   },
-  split = '#4e5767'
+  split = SPLIT_COLOR
 }
 
 config.font_size = 12.0
 config.font = wezterm.font_with_fallback {
   {
     family = 'JetBrains Mono',
-    weight='Regular',
-    italic=false
+    weight = 'Regular',
+    italic = false
   },
   {
     family = 'Fira Code',
-    weight='Regular',
-    italic=false
+    weight = 'Regular',
+    italic = false
   },
   {
     family = 'Consolas',
-    weight='Regular',
-    italic=false
+    weight = 'Regular',
+    italic = false
   }
 }
 
@@ -83,7 +85,7 @@ config.font = wezterm.font_with_fallback {
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = true
-config.window_decorations = "INTEGRATED_BUTTONS"
+config.window_decorations = 'INTEGRATED_BUTTONS'
 
 function tab_title(tab_info)
   local title = tab_info.tab_title
@@ -202,7 +204,7 @@ config.mouse_bindings = {
   -- Right click to paste.
   {
     event = { Up = { streak = 1, button = 'Right' } },
-    mods = "NONE",
+    mods = 'NONE',
     action = action.PasteFrom 'Clipboard',
   },
 
