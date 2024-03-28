@@ -9,5 +9,5 @@ local create_autocmd = vim.api.nvim_create_autocmd
 create_autocmd("BufWritePre", {
   group = group,
   pattern = "*",
-  command = ":%s/\\s\\+$//e"
+  command = ":%s/\\s\\+$//e",
 })

@@ -25,7 +25,7 @@ local ok, lazy = pcall(require, "lazy")
 if not ok then
   error("Failed to load lazy.nvim")
 
-	return
+  return
 end
 
 -- We have to set the leader key here for lazy.nvim to work.

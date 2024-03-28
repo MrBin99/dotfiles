@@ -4,9 +4,9 @@
 -- -------------------------------------------------------------------------- --
 
 return {
-  'nvim-treesitter/nvim-treesitter',
-  build = ':TSUpdate',
-  config = function ()
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "lua",
@@ -18,8 +18,8 @@ return {
         enable = true,
       },
       indent = {
-        enable = true
+        enable = true,
       },
     })
-  end
+  end,
 }

@@ -8,8 +8,8 @@ return {
     "Aasim-A/scrollEOF.nvim",
     event = { "CursorMoved", "WinScrolled" },
     opts = {},
-    config = function ()
+    config = function()
       require("scrollEOF").setup()
-    end
-  }
+    end,
+  },
 }

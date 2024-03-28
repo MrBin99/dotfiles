@@ -10,13 +10,13 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    config = function ()
+    config = function()
       require("telescope").setup({
         pickers = {
           find_files = {
-            hidden = true
-          }
-        }
+            hidden = true,
+          },
+        },
       })
 
       -- Keybindings.
@@ -27,6 +27,6 @@ return {
       keybindings.map("n", "<leader>fg", telescope_builtin.live_grep, "Grep")
       keybindings.map("n", "<leader>fb", telescope_builtin.buffers, "Buffer")
       keybindings.map("n", "<leader>fh", telescope_builtin.help_tags, "Help")
-    end
-  }
+    end,
+  },
 }
