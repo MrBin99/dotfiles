@@ -21,3 +21,14 @@
     dir: "{{ modules_path }}"
     target: "{{ ansible_env.HOME }}"
     state: "present"
+
+- name: "Remove exising Stylua installation"
+  ansible.builtin.file:
+    path: "{{ nvim_stylua_install_location }}/stylua"
+    state: "absent"
+
+- name: "Install Stylua"
+  ansible.builtin.unarchive:
+    src: "{{ nvim_stylua_install_url }}"
+    dest: "{{ nvim_stylua_install_location }}"
+    remote_src: true

@@ -1,4 +1,9 @@
 ---
+- name: "Remove Stylua"
+  ansible.builtin.file:
+    path: "{{ nvim_stylua_install_location }}/stylua"
+    state: "absent"
+
 - name: "Remove Nvim configuration"
   stow:
     package: "nvim"
