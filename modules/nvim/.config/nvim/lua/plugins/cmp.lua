@@ -27,6 +27,13 @@ return {
         end,
       },
       completion = { completeopt = "menu,menuone,noinsert" },
+      mapping = cmp.mapping.preset.insert({
+        ["<Up>"] = cmp.mapping.select_prev_item(),
+        ["<Down>"] = cmp.mapping.select_next_item(),
+        ["<C-Space>"] = cmp.mapping.complete({}),
+        ["<Esc>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+      }),
       sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
