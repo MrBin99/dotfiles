@@ -44,11 +44,16 @@ return {
       local telescope_builtin = require("telescope.builtin")
       local keybindings = require("helpers.keybindings")
 
-      keybindings.map("n", "<leader>ff", telescope_builtin.find_files, { desc = "[F]ind [F]ile" })
-      keybindings.map("n", "<leader>fg", telescope_builtin.live_grep, { desc = "[F]ind [G]rep" })
-      keybindings.map("n", "<leader>fe", telescope_builtin.diagnostics, { desc = "[F]ind [E]rrors" })
-      keybindings.map("n", "<leader>fb", telescope_builtin.buffers, { desc = "[F]ind [B]uffer" })
       keybindings.map("n", "<leader>fh", telescope_builtin.help_tags, { desc = "[F]ind [H]elp" })
+      keybindings.map("n", "<leader>fsk", telescope_builtin.keymaps, { desc = "[F]ind [K]eymaps" })
+      keybindings.map("n", "<leader>ff", telescope_builtin.find_files, { desc = "[F]ind [F]ile" })
+      keybindings.map("n", "<leader>fs", telescope_builtin.builtin, { desc = "[F]ind [S]elect Telescope" })
+      keybindings.map("n", "<leader>fw", telescope_builtin.grep_string, { desc = "[F]ind current [W]ord" })
+      keybindings.map("n", "<leader>fg", telescope_builtin.live_grep, { desc = "[F]ind by [G]rep" })
+      keybindings.map("n", "<leader>fd", telescope_builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
+      keybindings.map("n", "<leader>fr", telescope_builtin.resume, { desc = "[F]ind [R]esume" })
+      keybindings.map("n", "<leader>f.", telescope_builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
+      keybindings.map("n", "<leader><leader>", telescope_builtin.buffers, { desc = "[ ] Find existing buffers" })
     end,
   },
 }
