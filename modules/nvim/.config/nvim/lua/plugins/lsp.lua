@@ -14,7 +14,6 @@ return {
     { "folke/neodev.nvim", opts = {} },
   },
   config = function()
-    local keybindings = require("helpers.keybindings")
     local telescope_builtin = require("telescope.builtin")
 
     -- Add keybindings for LSP actions.
@@ -23,23 +22,23 @@ return {
       callback = function(event)
         -- Helper function.
         local map = function(keys, func, desc)
-          keybindings.map("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+          vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
         -- Go to definition.
-        map("gd", telescope_builtin.lsp_definitions, "[G]o to [D]efinition")
+        map("gd", telescope_builtin.lsp_definitions, "Go to Definition")
 
         -- Go to references.
-        map("gr", telescope_builtin.lsp_references, "[G]oto [R]eferences")
+        map("gr", telescope_builtin.lsp_references, "Goto References")
 
         -- Go to implementations.
-        map("gi", telescope_builtin.lsp_implementations, "[G]oto [I]mplementations")
+        map("gi", telescope_builtin.lsp_implementations, "Goto Implementations")
 
         -- Rename using LSP.
-        map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]me")
+        map("<leader>rn", vim.lsp.buf.rename, "Rename")
 
         -- Propose code actions when cursor is above errors.
-        map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+        map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
 
         -- Show documentation.
         map("K", vim.lsp.buf.hover, "Show Documentation")

@@ -52,16 +52,16 @@ return {
       local telescope_builtin = require("telescope.builtin")
       local keybindings = require("helpers.keybindings")
 
-      keybindings.map("n", "<leader>fh", telescope_builtin.help_tags, { desc = "[F]ind [H]elp" })
-      keybindings.map("n", "<leader>fsk", telescope_builtin.keymaps, { desc = "[F]ind [K]eymaps" })
-      keybindings.map("n", "<leader>ff", telescope_builtin.find_files, { desc = "[F]ind [F]ile" })
-      keybindings.map("n", "<leader>fs", telescope_builtin.builtin, { desc = "[F]ind [S]elect Telescope" })
-      keybindings.map("n", "<leader>fw", telescope_builtin.grep_string, { desc = "[F]ind current [W]ord" })
-      keybindings.map("n", "<leader>fg", telescope_builtin.live_grep, { desc = "[F]ind by [G]rep" })
-      keybindings.map("n", "<leader>fd", telescope_builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
-      keybindings.map("n", "<leader>fr", telescope_builtin.resume, { desc = "[F]ind [R]esume" })
-      keybindings.map("n", "<leader>f.", telescope_builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
-      keybindings.map("n", "<leader><leader>", telescope_builtin.buffers, { desc = "[ ] Find existing buffers" })
+      keybindings.map("n", "<leader>fh", telescope_builtin.help_tags, "Find Help")
+      keybindings.map("n", "<leader>fsk", telescope_builtin.keymaps, "Find Keymaps")
+      keybindings.map("n", "<leader>ff", telescope_builtin.find_files, "Find File")
+      keybindings.map("n", "<leader>fs", telescope_builtin.builtin, "Find Select Telescope")
+      keybindings.map("n", "<leader>fw", telescope_builtin.grep_string, "Find current Word")
+      keybindings.map("n", "<leader>fg", telescope_builtin.live_grep, "Find by Grep")
+      keybindings.map("n", "<leader>fd", telescope_builtin.diagnostics, "Find Diagnostics")
+      keybindings.map("n", "<leader>fr", telescope_builtin.resume, "Find Resume")
+      keybindings.map("n", "<leader>f.", telescope_builtin.oldfiles, 'Find Recent Files ("." for repeat)')
+      keybindings.map("n", "<leader><leader>", telescope_builtin.buffers, "Find existing buffers")
     end,
   },
 }
