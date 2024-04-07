@@ -4,6 +4,7 @@
 
 local g = vim.g
 local opt = vim.opt
+local keymap = vim.keymap
 
 -- --------------------------------- General -------------------------------- --
 
@@ -42,6 +43,7 @@ opt.history = 100 -- Remember N lines in history
 opt.lazyredraw = true -- Faster scrolling
 opt.synmaxcol = 240 -- Max column for syntax highlight
 opt.updatetime = 250 -- ms to wait for trigger an event
+keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") -- Clear search
 
 -- ----------------------------- Search, replace ---------------------------- --
 
