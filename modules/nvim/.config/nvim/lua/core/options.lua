@@ -12,6 +12,8 @@ opt.mouse = "r" -- Remove mouse popup
 opt.clipboard = "unnamedplus" -- Copy/paste to system clipboard
 opt.swapfile = false -- Don't use swapfile
 opt.completeopt = "menuone,noinsert,noselect" -- Autocomplete options
+opt.timeout = true -- Enable timeout for multi-keys keybindings
+opt.timeoutlen = 300 -- Set timeout length for multi-keys keybindings
 
 -- ----------------------------------- UI ----------------------------------- --
 
