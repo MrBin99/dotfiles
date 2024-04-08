@@ -15,7 +15,7 @@ git:
 
 keybinding:
   universal:
-    quit: "<esc>"
+    quit: "q"
     return: "q"
 
 customCommands:
