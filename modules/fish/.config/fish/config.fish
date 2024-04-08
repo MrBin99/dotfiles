@@ -54,6 +54,7 @@ alias df "duf"
 
 # Nvim.
 alias vim "nvim"
+alias v "nvim"
 
 # Git
 alias lg "lazygit"
