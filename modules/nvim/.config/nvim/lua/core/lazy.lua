@@ -35,4 +35,4 @@ end
 lazy.setup("plugins")
 
 -- "lazy.nvim" keybindings.
-require("helpers.keybindings").map("n", "<leader>l", lazy.show, "Show Lazy")
+require("helpers.keybindings").map("n", "<leader>lz", lazy.show, "Show Lazy")
