@@ -39,3 +39,29 @@
     cmd: "helm completion fish > {{ ansible_env.HOME }}/.config/fish/completions/helm.fish"
     executable: "/usr/bin/fish"
   changed_when: true
+
+- name: "Remove old Kind installation"
+  ansible.builtin.file:
+    path: "{{ kubernetes_kind_location }}"
+    state: "absent"
+  become: true
+
+- name: "Get Kind latest version"
+  ansible.builtin.shell:
+    cmd: "set -o pipefail && curl -s {{ kubernetes_kind_latest_release_url }} | jq -r '.assets | map(select(.browser_download_url | contains(\"linux-amd64\"))) | first | .browser_download_url'"
+    executable: "/bin/bash"
+  register: "kind_download_url"
+  changed_when: false
+
+- name: "Download Kind"
+  ansible.builtin.get_url:
+    url: "{{ kind_download_url.stdout }}"
+    dest: "{{ kubernetes_kind_location }}"
+    mode: "0755"
+  when: "kind_download_url.stdout"
+
+- name: "Install Kind Fish completions"
+  ansible.builtin.shell:
+    cmd: "kind completion fish > {{ ansible_env.HOME }}/.config/fish/completions/kind.fish"
+    executable: "/usr/bin/fish"
+  changed_when: true
