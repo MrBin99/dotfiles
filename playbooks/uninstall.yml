@@ -17,6 +17,11 @@
         name: "nvim"
         tasks_from: "uninstall"
 
+    - name: "Include role 'aws'"
+      ansible.builtin.include_role:
+        name: "aws"
+        tasks_from: "uninstall"
+
     - name: "Include role 'kubernetes'"
       ansible.builtin.include_role:
         name: "kubernetes"

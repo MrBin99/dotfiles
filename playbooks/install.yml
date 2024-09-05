@@ -109,6 +109,11 @@
         name: "kubernetes"
         tasks_from: "install"
 
+    - name: "Include role 'aws'"
+      ansible.builtin.include_role:
+        name: "aws"
+        tasks_from: "install"
+
     - name: "Include role 'nvim'"
       ansible.builtin.include_role:
         name: "nvim"

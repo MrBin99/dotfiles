@@ -1,0 +1,36 @@
+---
+- name: "Download AWS CLI"
+  ansible.builtin.get_url:
+    url: "{{ aws_cli_download_url }}"
+    dest: "/tmp/awscli.zip"
+    mode: "0644"
+  become: true
+
+- name: "Create AWS CLI unzip directory"
+  ansible.builtin.file:
+    path: "/tmp/awscli"
+    state: "directory"
+    mode: "0755"
+  become: true
+
+- name: "Unzip AWS CLI"
+  ansible.builtin.unarchive:
+    src: "/tmp/awscli.zip"
+    dest: "/tmp/awscli"
+    remote_src: true
+  become: true
+
+- name: "Install AWS CLI"
+  ansible.builtin.command:
+    cmd: "/tmp/awscli/aws/install --bin-dir {{ aws_cli_bin_dir }} --install-dir {{ aws_cli_install_dir }} --update"
+  become: true
+  changed_when: true
+
+- name: "Remove AWS CLI installation files"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: "absent"
+  become: true
+  with_items:
+    - "/tmp/awscli.zip"
+    - "/tmp/awscli"

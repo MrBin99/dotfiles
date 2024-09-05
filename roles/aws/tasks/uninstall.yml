@@ -1,0 +1,20 @@
+---
+- name: "Remove AWS CLI bin files"
+  ansible.builtin.file:
+    path: "{{ aws_cli_bin_dir }}/{{ item }}"
+    state: "absent"
+  become: true
+  with_items:
+    - "aws"
+    - "aws_completer"
+
+- name: "Remove AWS CLI installation directory"
+  ansible.builtin.file:
+    path: "{{ aws_cli_install_dir }}"
+    state: "absent"
+  become: true
+
+- name: "Remove AWS CLI configuration"
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.aws"
+    state: "absent"
