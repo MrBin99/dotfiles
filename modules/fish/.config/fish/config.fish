@@ -73,7 +73,7 @@ alias rm 'rm -i'
 # ------------------------------- Abreviations ------------------------------- #
 
 # Update and upgrade system.
-abbr update "sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt purge"
+abbr update "sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autopurge && sudo apt autoclean"
 
 # -------------------------------- Keybindings ------------------------------- #
 
