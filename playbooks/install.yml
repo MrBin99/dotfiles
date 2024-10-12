@@ -5,6 +5,8 @@
 
   vars:
     modules_path: "{{ cwd }}/modules"
+    roles_to_run: "{{ roles_to_run.split() }}"
+    roles_install_all: "{{ 'all' in roles_to_run }}"
     current_user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
 
   tasks:
@@ -26,100 +28,118 @@
     - name: "Include WSL check file"
       ansible.builtin.include_tasks:
         file: "{{ playbook_dir }}/includes/wsl.yml"
+      when: "roles_install_all or 'wsl' in roles_to_run"
 
     - name: "Include role 'wsl'"
       ansible.builtin.include_role:
         name: "wsl"
         tasks_from: "install"
-      when: "is_wsl"
+      when: "(roles_install_all or 'wsl' in roles_to_run) and is_wsl"
 
     - name: "Include role 'git'"
       ansible.builtin.include_role:
         name: "git"
         tasks_from: "install"
+      when: "roles_install_all or 'git' in roles_to_run"
 
     - name: "Include role 'bash'"
       ansible.builtin.include_role:
         name: "bash"
         tasks_from: "install"
+      when: "roles_install_all or 'bash' in roles_to_run"
 
     - name: "Include role 'fish'"
       ansible.builtin.include_role:
         name: "fish"
         tasks_from: "install"
+      when: "roles_install_all or 'fish' in roles_to_run"
 
     - name: "Include role 'utilities'"
       ansible.builtin.include_role:
         name: "utilities"
         tasks_from: "install"
+      when: "roles_install_all or 'utilities' in roles_to_run"
 
     - name: "Include role 'lazygit'"
       ansible.builtin.include_role:
         name: "lazygit"
         tasks_from: "install"
+      when: "roles_install_all or 'lazygit' in roles_to_run"
 
     - name: "Include role 'wezterm'"
       ansible.builtin.include_role:
         name: "wezterm"
         tasks_from: "install"
+      when: "roles_install_all or 'wezterm' in roles_to_run"
 
     - name: "Include role 'wezterm' (Windows)"
       ansible.builtin.include_role:
         name: "wezterm"
         tasks_from: "install_windows"
-      when: "is_wsl"
+      when: "(roles_install_all or 'wezterm' in roles_to_run) and is_wsl"
 
     - name: "Include role 'starship'"
       ansible.builtin.include_role:
         name: "starship"
         tasks_from: "install"
+      when: "roles_install_all or 'starship' in roles_to_run"
 
     - name: "Include role 'docker'"
       ansible.builtin.include_role:
         name: "docker"
         tasks_from: "install"
+      when: "roles_install_all or 'docker' in roles_to_run"
 
     - name: "Include role 'rust'"
       ansible.builtin.include_role:
         name: "rust"
         tasks_from: "install"
+      when: "roles_install_all or 'rust' in roles_to_run"
 
     - name: "Include role 'python'"
       ansible.builtin.include_role:
         name: "python"
         tasks_from: "install"
+      when: "roles_install_all or 'python' in roles_to_run"
 
     - name: "Include role 'node'"
       ansible.builtin.include_role:
         name: "node"
         tasks_from: "install"
+      when: "roles_install_all or 'node' in roles_to_run"
 
     - name: "Include role 'php'"
       ansible.builtin.include_role:
         name: "php"
         tasks_from: "install"
+      when: "roles_install_all or 'php' in roles_to_run"
 
     - name: "Include role 'terraform'"
       ansible.builtin.include_role:
         name: "terraform"
         tasks_from: "install"
+      when: "roles_install_all or 'terraform' in roles_to_run"
 
     - name: "Include role 'kubernetes'"
       ansible.builtin.include_role:
         name: "kubernetes"
         tasks_from: "install"
+      when: "roles_install_all or 'kubernetes' in roles_to_run"
 
     - name: "Include role 'aws'"
       ansible.builtin.include_role:
         name: "aws"
         tasks_from: "install"
+      when: "roles_install_all or 'aws' in roles_to_run"
 
     - name: "Include role 'nvim'"
       ansible.builtin.include_role:
         name: "nvim"
         tasks_from: "install"
+      when: "roles_install_all or 'nvim' in roles_to_run"
 
     - name: "Include role 'fish'"
       ansible.builtin.include_role:
         name: "fish"
         tasks_from: "update_completions"
+      when: "roles_install_all or 'fish' in roles_to_run"
