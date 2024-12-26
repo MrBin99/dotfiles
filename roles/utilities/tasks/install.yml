@@ -64,3 +64,34 @@
   ansible.builtin.file:
     path: "/tmp/yt-dlp"
     state: "absent"
+
+- name: "Remove Eza old installation"
+  ansible.builtin.file:
+    path: "{{ utilities_eza_location_file }}"
+    state: "absent"
+
+- name: "Get Eza latest version"
+  ansible.builtin.shell:
+    cmd: set -o pipefail && curl -s {{ utilities_eza_latest_release_url }} | jq -r '.assets | map(select(.browser_download_url | contains("eza_x86_64-unknown-linux-gnu"))) | first | .browser_download_url' # noqa yaml[quoted-strings]
+    executable: "/bin/bash"
+  register: "eza_download_url"
+  changed_when: false
+
+- name: "Download Eza"
+  ansible.builtin.get_url:
+    url: "{{ eza_download_url.stdout }}"
+    dest: "/tmp/eza.tar.gz"
+    mode: "0644"
+  when: "eza_download_url.stdout"
+
+- name: "Install Eza"
+  ansible.builtin.unarchive:
+    src: "/tmp/eza.tar.gz"
+    dest: "{{ utilities_eza_location }}"
+    remote_src: true
+  when: "eza_download_url.stdout"
+
+- name: "Remove Eza tarball"
+  ansible.builtin.file:
+    path: "/tmp/eza.tar.gz"
+    state: "absent"

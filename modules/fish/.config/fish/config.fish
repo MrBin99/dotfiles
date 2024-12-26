@@ -36,8 +36,8 @@ set -Ux MANPAGER "sh -c 'col -bx | batcat --theme OneHalfDark -l man -p'"
 
 # ---------------------------------- Aliases --------------------------------- #
 
-# Exa.
-alias ls "exa --icons --color=always --group-directories-first"
+# Eza.
+alias ls "eza --icons --color=always --group-directories-first"
 alias lt "ls -T -L 5"
 alias ll "ls -lag --header"
 alias llt "ls -Tgla -L 5 --header"

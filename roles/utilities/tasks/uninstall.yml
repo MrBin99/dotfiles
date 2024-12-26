@@ -4,6 +4,11 @@
     path: "{{ utilities_mailpit_location }}"
     state: "absent"
 
+- name: "Remove Eza"
+  ansible.builtin.file:
+    path: "{{ utilities_eza_location_file }}"
+    state: "absent"
+
 - name: "Remove Btop configuration"
   stow:
     package: "btop"

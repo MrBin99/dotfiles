@@ -9,7 +9,6 @@ utilities_packges:
   - "unzip"
   - "ripgrep"
   - "bat"
-  - "exa"
   - "duf"
   - "rsync"
   - "dnsutils"
@@ -26,3 +25,7 @@ utilities_yt_dlp_download_url: "https://github.com/yt-dlp/yt-dlp/releases/latest
 utilities_yt_dlp_location: "{{ ansible_env.HOME }}/.local/bin/yt-dlp"
 utilities_yt_dlp_fish_sources_download_url: "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.tar.gz"
 utilities_yt_dlp_fish_completions_location: "{{ ansible_env.HOME }}/.config/fish/completions/yt-dlp.fish"
+
+utilities_eza_latest_release_url: "https://api.github.com/repos/eza-community/eza/releases/latest"
+utilities_eza_location: "{{ ansible_env.HOME }}/.local/bin"
+utilities_eza_location_file: "{{ utilities_eza_location }}/eza"
