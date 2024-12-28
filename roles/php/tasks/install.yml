@@ -6,22 +6,37 @@
   with_items: "{{ php_phpenv_package_dependencies }}"
   become: true
 
+- name: "Check if PHPEnv is installed"
+  ansible.builtin.stat:
+    path: "{{ php_phpenv_location }}"
+  register: "phpenv_installed"
+
 - name: "Download PHPEnv install script"
   ansible.builtin.get_url:
     url: "{{ php_phpenv_install_script_url }}"
     dest: "/tmp/phpenv_install.sh"
     mode: "755"
+  when: "not phpenv_installed.stat.exists"
 
 - name: "Install PHPEnv"
   ansible.builtin.shell:
     cmd: "/tmp/phpenv_install.sh"
     executable: "/bin/bash"
   changed_when: true
+  when: "not phpenv_installed.stat.exists"
 
 - name: "Remove PHPEnv install script"
   ansible.builtin.file:
     path: "/tmp/phpenv_install.sh"
     state: "absent"
+  when: "not phpenv_installed.stat.exists"
+
+- name: "Update PHPEnv"
+  ansible.builtin.shell:
+    cmd: "phpenv update"
+    executable: "/bin/bash"
+  changed_when: true
+  when: "phpenv_installed.stat.exists"
 
 - name: "Check if PHPEnv global PHP version is installed"
   ansible.builtin.stat:
