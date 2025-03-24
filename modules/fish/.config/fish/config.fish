@@ -25,9 +25,6 @@ set -U NVM_ROOT $HOME/.nvm
 # Sets PHPENV default installation path.
 set -U PHPENV_ROOT $HOME/.phpenv
 
-# Sets Nvim default installation path.
-set -U NVIM_ROOT $HOME/.local/bin/nvim
-
 # Sets Snap default installation path.
 set -U SNAP_ROOT /snap
 
@@ -51,10 +48,6 @@ alias less "bat"
 
 # Duf.
 alias df "duf"
-
-# Nvim.
-alias vim "nvim"
-alias v "nvim"
 
 # Git
 alias lg "lazygit"
@@ -86,7 +79,6 @@ fish_add_path $SNAP_ROOT/bin
 fish_add_path $CARGO_ROOT/bin
 fish_add_path $PYENV_ROOT/bin
 fish_add_path $PHPENV_ROOT/bin
-fish_add_path $NVIM_ROOT/bin
 
 # ---------------------------------- Startup --------------------------------- #
 

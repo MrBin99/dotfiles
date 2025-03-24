@@ -15,12 +15,6 @@
         file: "{{ playbook_dir }}/includes/wsl.yml"
       when: "roles_uninstall_all or 'wsl' in roles_to_run"
 
-    - name: "Include role 'nvim'"
-      ansible.builtin.include_role:
-        name: "nvim"
-        tasks_from: "uninstall"
-      when: "roles_uninstall_all or 'nvim' in roles_to_run"
-
     - name: "Include role 'aws'"
       ansible.builtin.include_role:
         name: "aws"

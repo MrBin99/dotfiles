@@ -21,6 +21,13 @@
     target: "{{ ansible_env.HOME }}"
     state: "absent"
 
+- name: "Install Vim configuration"
+  stow:
+    package: "vim"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "absent"
+
 - name: "Remove utility packages"
   ansible.builtin.package:
     name: "{{ item }}"

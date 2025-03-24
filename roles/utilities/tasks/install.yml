@@ -6,6 +6,13 @@
   with_items: "{{ utilities_packges }}"
   become: true
 
+- name: "Install Vim configuration"
+  stow:
+    package: "vim"
+    dir: "{{ modules_path }}"
+    target: "{{ ansible_env.HOME }}"
+    state: "present"
+
 - name: "Install Btop configuration"
   stow:
     package: "btop"

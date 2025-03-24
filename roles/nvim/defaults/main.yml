@@ -1,5 +1,0 @@
----
-nvim_install_url: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
-nvim_install_location: "{{ ansible_env.HOME }}/.local/bin"
-nvim_stylua_install_url: "https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-x86_64.zip"
-nvim_stylua_install_location: "{{ ansible_env.HOME }}/.local/bin"

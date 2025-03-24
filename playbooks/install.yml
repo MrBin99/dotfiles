@@ -132,12 +132,6 @@
         tasks_from: "install"
       when: "roles_install_all or 'aws' in roles_to_run"
 
-    - name: "Include role 'nvim'"
-      ansible.builtin.include_role:
-        name: "nvim"
-        tasks_from: "install"
-      when: "roles_install_all or 'nvim' in roles_to_run"
-
     - name: "Include role 'fish'"
       ansible.builtin.include_role:
         name: "fish"
