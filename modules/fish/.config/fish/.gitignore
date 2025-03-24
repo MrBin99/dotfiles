@@ -1,4 +1,10 @@
 fish_variables
+fish_plugins
 
 conf.d/
 completions/
+functions/
+
+!functions/load_nvm.fish
+!functions/nvm_find_nvmrc.fish
+!functions/nvm.fish

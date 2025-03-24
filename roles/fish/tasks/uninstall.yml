@@ -1,8 +1,10 @@
 ---
-- name: "Remove Oh My Fish"
-  ansible.builtin.file:
-    path: "{{ fish_oh_my_fish_install_location }}"
-    state: "absent"
+- name: "Remove Fisher plugins"
+  ansible.builtin.shell:
+    cmd: "fisher remove {{ item.name }}"
+    executable: "/usr/bin/fish"
+  with_items: "{{ fish_fisher_plugins }}"
+  changed_when: false
 
 - name: "Reset default shell to Bash"
   ansible.builtin.user:
