@@ -1,5 +1,5 @@
 ---
-fish_ubuntu_ppa: "ppa:fish-shell/release-3"
+fish_ubuntu_ppa: "ppa:fish-shell/release-4"
 fish_package_dependencies:
   - "gnupg"
 fish_fisher_install_url: "https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish"
