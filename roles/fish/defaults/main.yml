@@ -1,8 +1,10 @@
 ---
-fish_ubuntu_ppa: "ppa:fish-shell/release-3"
+fish_ubuntu_ppa: "ppa:fish-shell/release-4"
 fish_package_dependencies:
   - "gnupg"
-fish_oh_my_fish_install_script_url: "https://get.oh-my.fish"
-fish_oh_my_fish_install_location: "{{ ansible_env.HOME }}/.local/share/omf"
-fish_oh_my_fish_packages:
-  - "bass"
+fish_fisher_install_url: "https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish"
+fish_fisher_plugins:
+  - name: "jorgebucaran/fisher"
+    path: "{{ ansible_env.HOME }}/.config/fish/functions/fisher.fish"
+  - name: "edc/bass"
+    path: "{{ ansible_env.HOME }}/.config/fish/functions/bass.fish"

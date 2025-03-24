@@ -43,29 +43,15 @@
     target: "{{ ansible_env.HOME }}"
     state: "present"
 
-- name: "Remove old version of Oh My Fish"
-  ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.local/share/omf"
-    state: "absent"
-
-- name: "Download Oh My Fish install script"
+- name: "Download Fisher"
   ansible.builtin.get_url:
-    url: "{{ fish_oh_my_fish_install_script_url }}"
-    dest: "/tmp/oh-my-fish-install.sh"
-    mode: "755"
+    url: "{{ fish_fisher_install_url }}"
+    dest: "{{ ansible_env.HOME }}/.config/fish/functions/fisher.fish"
+    mode: "0644"
 
-- name: "Install or update Oh My Fish"
-  ansible.builtin.command:
-    cmd: "/tmp/oh-my-fish-install.sh --noninteractive -y"
-    creates: "{{ fish_oh_my_fish_install_location }}"
-
-- name: "Remove Oh My Fish install script"
-  ansible.builtin.file:
-    path: "/tmp/oh-my-fish-install.sh"
-    state: "absent"
-
-- name: "Install Oh My Fish packages"
-  ansible.builtin.command:
-    cmd: "fish -c 'omf install {{ item }}'"
-    creates: "{{ fish_oh_my_fish_install_location }}/pkg/{{ item }}"
-  with_items: "{{ fish_oh_my_fish_packages }}"
+- name: "Install Fisher plugins"
+  ansible.builtin.shell:
+    cmd: "fisher install {{ item.name }}"
+    executable: "/usr/bin/fish"
+    creates: "{{ item.path }}"
+  with_items: "{{ fish_fisher_plugins }}"
