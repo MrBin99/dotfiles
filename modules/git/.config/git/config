@@ -8,6 +8,10 @@ email = MrBin99@users.noreply.github.com
 
 [core]
 editor = vim
+pager = delta
+
+[interactive]
+diffFilter = delta --color-only
 
 [init]
 defaultBranch = main
@@ -15,6 +19,7 @@ defaultBranch = main
 [merge]
 ff = false
 commit = false
+conflictstyle = diff3
 
 [pull]
 ff = true
@@ -24,4 +29,15 @@ rebase = true
 prune = true
 
 [diff]
-colorMoved = zebra
+colorMoved = default
+
+[delta]
+navigate = true
+syntax-theme = none
+line-numbers = true
+file-style = "omit"
+file-decoration-style = "omit"
+hunk-header-style = "file"
+hunk-header-decoration-style = "white box"
+hunk-header-file-style = "white"
+hunk-header-line-number-style = "white"
