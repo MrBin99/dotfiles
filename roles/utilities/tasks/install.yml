@@ -102,3 +102,40 @@
   ansible.builtin.file:
     path: "/tmp/eza.tar.gz"
     state: "absent"
+
+- name: "Install Delta"
+  ansible.builtin.shell:
+    cmd: set -o pipefail && curl -s {{ utilities_delta_latest_release_url }} | jq -r '.assets | map(select(.browser_download_url | contains("x86_64-unknown-linux-gnu"))) | first | .browser_download_url' # noqa yaml[quoted-strings]
+    executable: "/bin/bash"
+  register: "delta_download_url"
+  changed_when: false
+
+- name: "Download Delta"
+  ansible.builtin.get_url:
+    url: "{{ delta_download_url.stdout }}"
+    dest: "/tmp/delta.tar.gz"
+    mode: "0644"
+  when: "delta_download_url.stdout"
+
+- name: "Install Eza"
+  ansible.builtin.shell:
+    cmd: "set -o pipefail && tar xzf /tmp/delta.tar.gz --wildcards '*/delta' --strip-components 1 -C . && mv delta {{ utilities_delta_location }}"
+    executable: "/bin/bash"
+    chdir: "/tmp/"
+  when: "delta_download_url.stdout"
+  changed_when: false
+
+- name: "Remove Delta tarball"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: "absent"
+  with_items:
+    - "/tmp/delta.tar.gz"
+    - "/tmp/delta"
+
+- name: "Install Delta Fish completions"
+  ansible.builtin.shell:
+    cmd: "delta --generate-completion fish > {{ ansible_env.HOME }}/.config/fish/completions/delta.fish"
+    executable: "/usr/bin/fish"
+  changed_when: true
+  when: "delta_download_url.stdout"
