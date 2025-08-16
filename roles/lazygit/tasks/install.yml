@@ -6,7 +6,7 @@
 
 - name: "Get Lazygit latest version"
   ansible.builtin.shell:
-    cmd: "set -o pipefail && curl -s {{ lazygit_latest_release_url }} | jq -r '.assets | map(select(.browser_download_url | contains(\"Linux_x86_64\"))) | first | .browser_download_url'"
+    cmd: "set -o pipefail && curl -s {{ lazygit_latest_release_url }} | jq -r '.assets | map(select(.browser_download_url | contains(\"linux_x86_64\"))) | first | .browser_download_url'"
     executable: "/bin/bash"
   register: "lazygit_download_url"
   changed_when: false
