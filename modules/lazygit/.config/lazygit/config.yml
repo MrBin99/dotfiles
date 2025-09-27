@@ -19,7 +19,6 @@ git:
 keybinding:
   universal:
     quit: "q"
-    return: "q"
 
 customCommands:
   - key: "Z"
