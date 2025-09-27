@@ -58,7 +58,7 @@
     url: "{{ kind_download_url.stdout }}"
     dest: "{{ kubernetes_kind_location }}"
     mode: "0755"
-  when: "kind_download_url.stdout"
+  when: "kind_download_url.stdout is defined and kind_download_url.stdout != ''"
 
 - name: "Install Kind Fish completions"
   ansible.builtin.shell:

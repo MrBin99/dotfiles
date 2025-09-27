@@ -89,14 +89,14 @@
     url: "{{ eza_download_url.stdout }}"
     dest: "/tmp/eza.tar.gz"
     mode: "0644"
-  when: "eza_download_url.stdout"
+  when: "eza_download_url.stdout is defined and eza_download_url.stdout != ''"
 
 - name: "Install Eza"
   ansible.builtin.unarchive:
     src: "/tmp/eza.tar.gz"
     dest: "{{ utilities_eza_location }}"
     remote_src: true
-  when: "eza_download_url.stdout"
+  when: "eza_download_url.stdout is defined and eza_download_url.stdout != ''"
 
 - name: "Remove Eza tarball"
   ansible.builtin.file:
@@ -115,14 +115,14 @@
     url: "{{ delta_download_url.stdout }}"
     dest: "/tmp/delta.tar.gz"
     mode: "0644"
-  when: "delta_download_url.stdout"
+  when: "delta_download_url.stdout is defined and delta_download_url.stdout != ''"
 
 - name: "Install Eza"
   ansible.builtin.shell:
     cmd: "set -o pipefail && tar xzf /tmp/delta.tar.gz --wildcards '*/delta' --strip-components 1 -C . && mv delta {{ utilities_delta_location }}"
     executable: "/bin/bash"
     chdir: "/tmp/"
-  when: "delta_download_url.stdout"
+  when: "delta_download_url.stdout is defined and delta_download_url.stdout != ''"
   changed_when: false
 
 - name: "Remove Delta tarball"
@@ -138,4 +138,4 @@
     cmd: "delta --generate-completion fish > {{ ansible_env.HOME }}/.config/fish/completions/delta.fish"
     executable: "/usr/bin/fish"
   changed_when: true
-  when: "delta_download_url.stdout"
+  when: "delta_download_url.stdout is defined and delta_download_url.stdout != ''"
