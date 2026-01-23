@@ -4,6 +4,14 @@
     path: "{{ utilities_mailpit_location }}"
     state: "absent"
 
+- name: "Remove zoxide"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: "absent"
+  with_items:
+    - "{{ utilities_zoxide_location_file }}"
+    - "{{ utilities_zoxide_location_data }}"
+
 - name: "Remove yt-dlp"
   ansible.builtin.file:
     path: "{{ utilities_yt_dlp_location }}"
@@ -14,7 +22,7 @@
     path: "{{ utilities_eza_location_file }}"
     state: "absent"
 
-- name: "Remove Delat"
+- name: "Remove Delta"
   ansible.builtin.file:
     path: "{{ utilities_delta_location_file }}"
     state: "absent"

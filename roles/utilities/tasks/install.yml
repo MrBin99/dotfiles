@@ -139,3 +139,24 @@
     executable: "/usr/bin/fish"
   changed_when: true
   when: "delta_download_url.stdout is defined and delta_download_url.stdout != ''"
+
+- name: "Remove old zoxide installation"
+  ansible.builtin.file:
+    path: "{{ utilities_zoxide_location_file }}"
+    state: "absent"
+
+- name: "Download zoxide install script"
+  ansible.builtin.get_url:
+    url: "{{ utilities_zoxide_install_script_url }}"
+    dest: "/tmp/zoxide_install.sh"
+    mode: "0755"
+
+- name: "Install zoxide"
+  ansible.builtin.command:
+    cmd: "/tmp/zoxide_install.sh"
+    creates: "{{ utilities_zoxide_location_file }}"
+
+- name: "Remove zoxide install script"
+  ansible.builtin.file:
+    path: "/tmp/zoxide_install.sh"
+    state: "absent"

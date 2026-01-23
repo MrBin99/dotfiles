@@ -103,6 +103,11 @@ if status is-interactive
   phpenv init - | source
 end
 
+# Startup zoxide.
+if test -f $HOME/.local/bin/zoxide
+  zoxide init fish | source
+end
+
 # Start Starship prompt.
 if test -f $HOME/.local/bin/starship
   starship init fish | source
