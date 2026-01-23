@@ -18,6 +18,7 @@ utilities_packges:
   - "jq"
   - "siege"
   - "ffmpeg"
+  - "ncdu"
 
 utilities_mailpit_install_url: "https://raw.githubusercontent.com/axllent/mailpit/develop/install.sh"
 utilities_mailpit_location: "/usr/local/bin/mailpit"
