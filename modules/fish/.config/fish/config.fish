@@ -105,7 +105,7 @@ end
 
 # Startup zoxide.
 if test -f $HOME/.local/bin/zoxide
-  zoxide init fish | source
+  zoxide init fish --cmd cd | source
 end
 
 # Start Starship prompt.
