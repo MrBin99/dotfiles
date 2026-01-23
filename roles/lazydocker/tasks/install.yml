@@ -1,0 +1,33 @@
+---
+- name: "Remove old lazydocker installation"
+  ansible.builtin.file:
+    path: "{{ lazydocker_location }}"
+    state: "absent"
+
+- name: "Get lazydocker latest version"
+  ansible.builtin.shell:
+    cmd: "set -o pipefail && curl -s {{ lazydocker_latest_release_url }} | jq -r '.assets | map(select(.browser_download_url | ascii_downcase | contains(\"linux_x86_64\"))) | first | .browser_download_url'"
+    executable: "/bin/bash"
+  register: "lazydocker_download_url"
+  changed_when: false
+
+- name: "Download lazydocker"
+  ansible.builtin.get_url:
+    url: "{{ lazydocker_download_url.stdout }}"
+    dest: "/tmp/lazydocker.tar.gz"
+    mode: "0644"
+  when: "lazydocker_download_url.stdout is defined and lazydocker_download_url.stdout != ''"
+
+- name: "Install lazydocker"
+  ansible.builtin.unarchive:
+    src: "/tmp/lazydocker.tar.gz"
+    dest: "{{ lazydocker_folder_location }}"
+    include:
+      - "lazydocker"
+    remote_src: true
+  when: "lazydocker_download_url.stdout is defined and lazydocker_download_url.stdout != ''"
+
+- name: "Remove lazydocker tarball"
+  ansible.builtin.file:
+    path: "/tmp/lazydocker.tar.gz"
+    state: "absent"

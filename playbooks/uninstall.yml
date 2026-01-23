@@ -81,6 +81,12 @@
         tasks_from: "uninstall"
       when: "roles_uninstall_all or 'wezterm' in roles_to_run"
 
+    - name: "Include role 'lazydocker'"
+      ansible.builtin.include_role:
+        name: "lazydocker"
+        tasks_from: "uninstall"
+      when: "roles_uninstall_all or 'lazydocker' in roles_to_run"
+
     - name: "Include role 'lazygit'"
       ansible.builtin.include_role:
         name: "lazygit"

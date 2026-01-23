@@ -1,0 +1,5 @@
+---
+- name: "Remove lazydocker"
+  ansible.builtin.file:
+    path: "{{ lazydocker_location }}"
+    state: "absent"

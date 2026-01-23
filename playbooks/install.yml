@@ -66,6 +66,12 @@
         tasks_from: "install"
       when: "roles_install_all or 'lazygit' in roles_to_run"
 
+    - name: "Include role 'lazydocker'"
+      ansible.builtin.include_role:
+        name: "lazydocker"
+        tasks_from: "install"
+      when: "roles_install_all or 'lazydocker' in roles_to_run"
+
     - name: "Include role 'wezterm'"
       ansible.builtin.include_role:
         name: "wezterm"

@@ -52,6 +52,9 @@ alias df "duf"
 # Alias "fd"
 alias fd "fdfind"
 
+# Alias "lazydocker"
+alias lzd "lazydocker"
+
 # Git
 alias lg "lazygit"
 alias glo "git log --graph --pretty --format='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an> %C(cyan)<%ae>%Creset' --abbrev-commit"
