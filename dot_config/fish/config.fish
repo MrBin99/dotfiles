@@ -23,6 +23,9 @@ alias llt "ls -Tgla -L 5 --header"
 # Ripgrep.
 alias grep "rg"
 
+# fd-find.
+alias find "fd"
+
 # Bat.
 alias cat "bat --paging=never"
 alias less "bat --paging=always"

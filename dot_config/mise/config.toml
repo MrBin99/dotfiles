@@ -8,6 +8,7 @@ starship = "latest"
 bat = "latest"
 btop = "latest"
 eza = "latest"
+fd = "latest"
 ripgrep = "latest"
 
 # Misc
