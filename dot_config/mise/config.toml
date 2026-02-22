@@ -26,3 +26,6 @@ ansible = "latest"
 pipx = "latest"
 poetry = "latest"
 uv = "latest"
+
+node = "lts"
+pnpm = "latest"
