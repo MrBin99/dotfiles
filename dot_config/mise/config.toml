@@ -5,6 +5,7 @@
 starship = "latest"
 
 # Tools
+"aqua:axllent/mailpit" = "latest"
 bat = "latest"
 btop = "latest"
 eza = "latest"

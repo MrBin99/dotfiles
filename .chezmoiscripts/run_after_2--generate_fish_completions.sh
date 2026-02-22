@@ -7,5 +7,6 @@ rg --generate=complete-fish > $HOME/.config/fish/completions/rg.fish
 bat --completion fish > $HOME/.config/fish/completions/bat.fish
 fd --gen-completions fish > $HOME/.config/fish/completions/fd.fish
 docker completion fish > $HOME/.config/fish/completions/docker.fish
+mailpit completion fish > $HOME/.config/fish/completions/mailpit.fish
 
 fish_update_completions
