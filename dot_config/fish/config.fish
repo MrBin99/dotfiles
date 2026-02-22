@@ -42,6 +42,11 @@ alias diff "delta"
 alias cat "bat --paging=never"
 alias less "bat --paging=always"
 
+# Confirm before making mistakes.
+alias cp 'cp -i'
+alias mv 'mv -i'
+alias rm 'rm -i'
+
 # ------------------------------ Abbreviations ------------------------------- #
 
 # Update and upgrade system.
