@@ -22,3 +22,6 @@ usage = "latest"
 
 # Programming languages and tools.
 python = "latest"
+ansible = "latest"
+pipx = "latest"
+uv = "latest"
