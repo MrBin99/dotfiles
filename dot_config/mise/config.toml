@@ -11,6 +11,7 @@ eza = "latest"
 fd = "latest"
 jq = "latest"
 ripgrep = "latest"
+yt-dlp = "latest"
 
 # Misc
 usage = "latest"

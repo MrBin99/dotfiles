@@ -3,3 +3,9 @@
   url: '{{ gitHubLatestReleaseAssetURL "jdx/mise" "mise-*-linux-x64-musl" }}'
   executable: true
   refreshPeriod: "168h"
+
+.config/fish/completions/yt-dlp.fish:
+  type: "archive-file"
+  url: '{{ gitHubLatestReleaseAssetURL "yt-dlp/yt-dlp" "yt-dlp.tar.gz" }}'
+  path: "yt-dlp/completions/fish/yt-dlp.fish"
+  refreshPeriod: "168h"
