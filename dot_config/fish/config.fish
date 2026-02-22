@@ -6,6 +6,11 @@ set fish_greeting ''
 # Set the default editor to use.
 set EDITOR vim
 
+# ---------------------------------- Aliases --------------------------------- #
+
+# Ripgrep.
+alias grep "rg"
+
 # ------------------------------ Abbreviations ------------------------------- #
 
 # Update and upgrade system.

@@ -4,5 +4,8 @@
 "aqua:fish-shell/fish-shell" = { version = "latest", postinstall = "rm -rf $HOME/.local/bin/fish && ln -sf $MISE_TOOL_INSTALL_PATH/fish $HOME/.local/bin/fish" }
 starship = "latest"
 
+# Tools
+ripgrep = "latest"
+
 # Misc
 usage = "latest"
