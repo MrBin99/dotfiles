@@ -9,6 +9,7 @@ bat = "latest"
 btop = "latest"
 eza = "latest"
 fd = "latest"
+jq = "latest"
 ripgrep = "latest"
 
 # Misc
