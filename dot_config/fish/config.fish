@@ -18,6 +18,9 @@ set DEFAULT_FZF_OPTS "--style=full --color='pointer:#56B6C2' --preview 'bat --st
 # Set defaults options for "fzf" command.
 set -x FZF_DEFAULT_OPTS "$DEFAULT_FZF_OPTS"
 
+# Set options for "zoxide" using "fzf" command.
+set -x _ZO_FZF_OPTS "$DEFAULT_FZF_OPTS"
+
 # ---------------------------------- Aliases --------------------------------- #
 
 # Eza.
@@ -63,6 +66,14 @@ if mise which fzf > /dev/null
   # Unbind default "ctrl-t" and bind "alt-t" it to "fzf-file-widget".
   bind -e ctrl-t
   bind alt-t fzf-file-widget
+end
+
+# Startup zoxide.
+if mise which zoxide > /dev/null
+  zoxide init fish --cmd cd | source
+
+  # Bind "alt-y" to "zoxide".
+  bind alt-y cdi
 end
 
 # Start Starship prompt.

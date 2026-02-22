@@ -14,6 +14,7 @@ fzf = "latest"
 jq = "latest"
 ripgrep = "latest"
 yt-dlp = "latest"
+zoxide = "latest"
 
 # Misc
 usage = "latest"
