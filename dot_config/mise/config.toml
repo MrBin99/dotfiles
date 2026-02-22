@@ -19,3 +19,6 @@ zoxide = "latest"
 
 # Misc
 usage = "latest"
+
+# Programming languages and tools.
+python = "latest"
