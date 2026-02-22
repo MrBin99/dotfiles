@@ -5,6 +5,7 @@
 starship = "latest"
 
 # Tools
+eza = "latest"
 ripgrep = "latest"
 
 # Misc

@@ -8,6 +8,12 @@ set EDITOR vim
 
 # ---------------------------------- Aliases --------------------------------- #
 
+# Eza.
+alias ls "eza --icons --color=always --group-directories-first"
+alias lt "ls -T -L 5"
+alias ll "ls -lag --header"
+alias llt "ls -Tgla -L 5 --header"
+
 # Ripgrep.
 alias grep "rg"
 
