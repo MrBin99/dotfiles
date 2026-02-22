@@ -12,6 +12,12 @@ set -x MANPAGER "bat -plman"
 # Set theme for "bat" command.
 set -x BAT_THEME "OneHalfDark"
 
+# Default options for "fzf" command.
+set DEFAULT_FZF_OPTS "--style=full --color='pointer:#56B6C2' --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+# Set defaults options for "fzf" command.
+set -x FZF_DEFAULT_OPTS "$DEFAULT_FZF_OPTS"
+
 # ---------------------------------- Aliases --------------------------------- #
 
 # Eza.
@@ -48,6 +54,15 @@ fish_add_path $HOME/.local/bin
 # Start Mise.
 if test -f $HOME/.local/bin/mise
   mise activate fish | source
+end
+
+# Start fzf.
+if mise which fzf > /dev/null
+  fzf --fish | source
+
+  # Unbind default "ctrl-t" and bind "alt-t" it to "fzf-file-widget".
+  bind -e ctrl-t
+  bind alt-t fzf-file-widget
 end
 
 # Start Starship prompt.
