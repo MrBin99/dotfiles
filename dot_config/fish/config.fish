@@ -42,6 +42,14 @@ alias diff "delta"
 alias cat "bat --paging=never"
 alias less "bat --paging=always"
 
+# Git.
+alias glo "git log --graph --pretty --format='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an> %C(cyan)<%ae>%Creset' --abbrev-commit"
+alias gaa "git add -A"
+alias gs "git status"
+alias gc "git commit"
+alias gca "git commit --amend"
+alias gcf "git commit --fixup"
+
 # Confirm before making mistakes.
 alias cp 'cp -i'
 alias mv 'mv -i'
