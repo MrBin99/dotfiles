@@ -5,6 +5,7 @@
 starship = "latest"
 
 # Tools
+bat = "latest"
 btop = "latest"
 eza = "latest"
 ripgrep = "latest"

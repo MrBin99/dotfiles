@@ -6,6 +6,12 @@ set fish_greeting ''
 # Set the default editor to use.
 set EDITOR vim
 
+# Set "bat" as the default man pager.
+set -x MANPAGER "bat -plman"
+
+# Set theme for "bat" command.
+set -x BAT_THEME "OneHalfDark"
+
 # ---------------------------------- Aliases --------------------------------- #
 
 # Eza.
@@ -16,6 +22,10 @@ alias llt "ls -Tgla -L 5 --header"
 
 # Ripgrep.
 alias grep "rg"
+
+# Bat.
+alias cat "bat --paging=never"
+alias less "bat --paging=always"
 
 # ------------------------------ Abbreviations ------------------------------- #
 
