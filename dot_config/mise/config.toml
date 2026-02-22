@@ -5,6 +5,7 @@
 starship = "latest"
 
 # Tools
+btop = "latest"
 eza = "latest"
 ripgrep = "latest"
 
