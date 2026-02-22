@@ -16,3 +16,8 @@ fish_add_path $HOME/.local/bin
 if test -f $HOME/.local/bin/mise
   mise activate fish | source
 end
+
+# Start Starship prompt.
+if mise which starship > /dev/null
+  starship init fish | source
+end
