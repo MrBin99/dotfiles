@@ -6,6 +6,10 @@ set fish_greeting ''
 # Set the default editor to use.
 set EDITOR vim
 
+# -------------------------------- Keybindings ------------------------------- #
+
+bind --user \b backward-kill-word
+
 # -------------------------- Add directory to path. -------------------------- #
 
 fish_add_path $HOME/.local/bin
