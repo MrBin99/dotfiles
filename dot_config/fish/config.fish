@@ -35,6 +35,9 @@ alias grep "rg"
 # fd-find.
 alias find "fd"
 
+# delta.
+alias diff "delta"
+
 # Bat.
 alias cat "bat --paging=never"
 alias less "bat --paging=always"
