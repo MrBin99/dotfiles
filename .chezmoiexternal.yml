@@ -1,0 +1,5 @@
+.local/bin/mise:
+  type: "file"
+  url: '{{ gitHubLatestReleaseAssetURL "jdx/mise" "mise-*-linux-x64-musl" }}'
+  executable: true
+  refreshPeriod: "168h"
