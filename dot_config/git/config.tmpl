@@ -4,6 +4,28 @@ email = {{ .git.email }}
 
 [core]
 editor = vim
+pager = delta
 
 [init]
 defaultBranch = main
+
+[interactive]
+diffFilter = delta --color-only
+
+[merge]
+conflictStyle = zdiff3
+
+[diff]
+colorMoved = default
+
+[delta]
+navigate = true
+syntax-theme = "OneHalfDark"
+side-by-side = true
+line-numbers = true
+file-style = "omit"
+file-decoration-style = "omit"
+hunk-header-style = "file"
+hunk-header-decoration-style = "blue box"
+hunk-header-file-style = "blue"
+hunk-header-line-number-style = "blue"
