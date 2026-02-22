@@ -6,6 +6,11 @@ set fish_greeting ''
 # Set the default editor to use.
 set EDITOR vim
 
+# ------------------------------ Abbreviations ------------------------------- #
+
+# Update and upgrade system.
+abbr update "sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autopurge && sudo apt autoclean"
+
 # -------------------------------- Keybindings ------------------------------- #
 
 bind --user \b backward-kill-word
