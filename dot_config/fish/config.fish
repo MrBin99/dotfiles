@@ -4,7 +4,7 @@
 set fish_greeting ''
 
 # Set the default editor to use.
-set EDITOR vim
+set EDITOR hx
 
 # Set "bat" as the default man pager.
 set -x MANPAGER "bat -plman"
@@ -54,6 +54,10 @@ alias gcf "git commit --fixup"
 alias cp 'cp -i'
 alias mv 'mv -i'
 alias rm 'rm -i'
+
+# Helix.
+alias vim "hx"
+alias vi "hx"
 
 # ------------------------------ Abbreviations ------------------------------- #
 
