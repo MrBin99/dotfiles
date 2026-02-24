@@ -27,6 +27,7 @@ python = "latest"
 ansible = "latest"
 pipx = "latest"
 poetry = "latest"
+ruff = "latest"
 uv = "latest"
 
 node = "lts"
