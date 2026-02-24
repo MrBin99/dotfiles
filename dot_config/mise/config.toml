@@ -15,6 +15,7 @@ fzf = "latest"
 helix = "latest"
 jq = "latest"
 ripgrep = "latest"
+terraform = "latest"
 yt-dlp = "latest"
 zoxide = "latest"
 
