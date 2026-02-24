@@ -16,6 +16,7 @@ helix = "latest"
 jq = "latest"
 ripgrep = "latest"
 terraform = "latest"
+yazi = "latest"
 yt-dlp = "latest"
 zoxide = "latest"
 
