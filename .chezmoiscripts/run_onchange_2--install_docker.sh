@@ -15,3 +15,8 @@ EOF
 
 sudo apt update -y
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Make sure current user can run Docker commands.
+if [[ $(sudo grep "docker" /etc/group) ]]; then
+  sudo usermod -aG docker $USER
+fi
