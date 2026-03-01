@@ -13,3 +13,6 @@ trim-trailing-whitespace = true
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
 mode.select = "SELECT"
+
+[editor.file-picker]
+hidden = false
