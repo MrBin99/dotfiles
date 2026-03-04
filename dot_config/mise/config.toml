@@ -6,6 +6,7 @@ starship = "latest"
 
 # Tools
 "aqua:axllent/mailpit" = "latest"
+aws-cli = "latest"
 bat = "latest"
 btop = "latest"
 delta = "latest"
