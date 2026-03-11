@@ -1,0 +1,21 @@
+disableStartupPopups: true
+
+gui:
+  showRandomTip: false
+  nerdFontsVersion: "3"
+  border: "rounded"
+  timeFormat: "02/01/2006 15:04"
+  shortTimeFormat: "02/01/2006 15:04"
+  commitAuthorShortLength: 6
+  theme:
+    selectedLineBgColor:
+      - "#181A1F"
+
+git:
+  autoFetch: false
+  pagers:
+    - pager: "delta --paging=never"
+      colorArg: "always"
+
+update:
+  method: "never"

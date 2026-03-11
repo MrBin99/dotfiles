@@ -59,6 +59,9 @@ alias rm 'rm -i'
 alias vim "hx"
 alias vi "hx"
 
+# Lazygit.
+alias lg "lazygit"
+
 # ------------------------------ Abbreviations ------------------------------- #
 
 # Update and upgrade system.
