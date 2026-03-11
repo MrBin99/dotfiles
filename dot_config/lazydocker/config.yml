@@ -1,0 +1,4 @@
+gui:
+  theme:
+    selectedLineBgColor:
+      - "#181A1F"

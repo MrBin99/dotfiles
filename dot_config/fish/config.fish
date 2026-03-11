@@ -62,6 +62,9 @@ alias vi "hx"
 # Lazygit.
 alias lg "lazygit"
 
+# Lazydocker.
+alias ldo "lazydocker"
+
 # ------------------------------ Abbreviations ------------------------------- #
 
 # Update and upgrade system.
