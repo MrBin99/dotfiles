@@ -4,6 +4,7 @@ packages:
   - "curl"
   - "dnsutils"
   - "ffmpeg"
+  - "gettext"
   - "git"
   - "htop"
   - "inetutils-traceroute"
