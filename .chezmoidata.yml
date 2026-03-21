@@ -1,6 +1,7 @@
 packages:
   - "apache2-utils"
   - "ca-certificates"
+  - "clang"
   - "curl"
   - "dnsutils"
   - "ffmpeg"
