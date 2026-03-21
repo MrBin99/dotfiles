@@ -23,6 +23,7 @@ terraform = "latest"
 yazi = "latest"
 yt-dlp = "latest"
 zoxide = "latest"
+watchexec = "latest"
 
 # Misc
 usage = "latest"
