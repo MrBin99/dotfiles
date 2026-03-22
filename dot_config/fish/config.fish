@@ -3,6 +3,19 @@
 # Remove greeting messages.
 set fish_greeting ''
 
+# Set current terminal / tab title.
+function fish_title
+  set cmd (string join "" $argv)   # Current running command.
+  set cwd (prompt_pwd)             # Current working directory.
+
+  # If a command is running.
+  if test -n "$cmd"
+    echo "$cmd  |  $cwd"
+  else
+    echo $cwd
+  end
+end
+
 # Set the default editor to use.
 set EDITOR hx
 
