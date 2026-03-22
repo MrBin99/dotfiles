@@ -8,6 +8,7 @@ line-number = "relative"
 popup-border = "all"
 rulers = [80]
 trim-trailing-whitespace = true
+true-color = true
 
 [editor.statusline]
 mode.normal = "NORMAL"
