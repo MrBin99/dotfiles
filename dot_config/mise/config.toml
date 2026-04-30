@@ -40,5 +40,6 @@ node = "lts"
 pnpm = "latest"
 "npm:mjml" = "latest"
 oxfmt = "latest"
+oxlint = "latest"
 
 rust = "stable"
