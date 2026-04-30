@@ -39,5 +39,6 @@ uv = "latest"
 node = "lts"
 pnpm = "latest"
 "npm:mjml" = "latest"
+oxfmt = "latest"
 
 rust = "stable"
