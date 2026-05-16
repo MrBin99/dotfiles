@@ -34,6 +34,7 @@ ansible = "latest"
 pipx = "latest"
 poetry = "latest"
 ruff = "latest"
+ty = "latest"
 uv = "latest"
 
 node = "lts"
