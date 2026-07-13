@@ -11,7 +11,7 @@ symbol = "·"
 [time]
 disabled = false
 format = " [$time]($style)"
-time_format = "%v | %T "
+time_format = "%d-%b-%Y | %T"
 
 # Show command status code if failed.
 [status]
