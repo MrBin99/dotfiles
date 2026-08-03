@@ -1,3 +1,9 @@
+[plugins]
+php = "https://github.com/verzly/mise-php"
+
+[env]
+_.php = { prebuilt_static = true }
+
 [tools]
 
 # Shell
@@ -43,5 +49,7 @@ pnpm = "latest"
 "npm:mjml" = "latest"
 oxfmt = "latest"
 oxlint = "latest"
+
+php = "latest"
 
 rust = "stable"
