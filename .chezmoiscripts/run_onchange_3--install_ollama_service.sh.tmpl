@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+SERVICE="[Unit]
+Description=Ollama Service
+After=network-online.target
+
+[Service]
+ExecStart={{ .chezmoi.homeDir }}/.local/bin/mise exec -- ollama serve
+User={{ .chezmoi.username }}
+Group={{ .chezmoi.group }}
+Restart=always
+RestartSec=3
+Environment=\"PATH=\$PATH\"
+
+[Install]
+WantedBy=multi-user.target"
+
+FILE_PATH="/etc/systemd/system/ollama.service"
+
+sudo bash -c 'printf "%s\n" "$1" > "$2"' _ "$SERVICE" "$FILE_PATH"
+
+sudo systemctl daemon-reload
+sudo systemctl enable ollama
+sudo systemctl restart ollama
