@@ -91,6 +91,13 @@ alias lg "lazygit"
 # Lazydocker.
 alias ldo "lazydocker"
 
+{{- if eq .chezmoi.os "linux" }}
+{{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+# Android
+alias android "android.exe"
+{{- end }}
+{{- end }}
+
 # ------------------------------ Abbreviations ------------------------------- #
 
 # Update and upgrade system.
